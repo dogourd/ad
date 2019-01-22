@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f338f3e-6f63-48db-81c0-e39123b5c245" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note/MySQL/slow_query.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/MySQL/slow_query.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,7 +36,7 @@
           <entry key="gitignore" value="28" />
           <entry key="java" value="16409" />
           <entry key="json" value="2" />
-          <entry key="md" value="3453" />
+          <entry key="md" value="3717" />
           <entry key="xml" value="1943" />
           <entry key="yml" value="1282" />
         </counts>
@@ -47,7 +46,7 @@
           <entry key="Git file" value="28" />
           <entry key="JAVA" value="16409" />
           <entry key="JSON" value="2" />
-          <entry key="Markdown" value="3453" />
+          <entry key="Markdown" value="3717" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1943" />
           <entry key="YAML" value="1282" />
@@ -89,8 +88,8 @@
         <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="204">
-                <caret line="104" column="1" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+              <first_editor relative-caret-position="294">
+                <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
               </first_editor>
               <second_editor />
             </state>
@@ -659,7 +658,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548159983831" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548160964352" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../peoplespringboot" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -745,10 +744,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62525000" />
+    <option name="totallyTimeSpent" value="63227000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.18707941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -790,7 +790,7 @@
       <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18707941" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18707941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -808,7 +808,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.42670536" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.44121915" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Tail" order="11" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -1187,8 +1187,8 @@
     <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="204">
-            <caret line="104" column="1" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
+          <first_editor relative-caret-position="294">
+            <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>
