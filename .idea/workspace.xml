@@ -37,7 +37,7 @@
           <entry key="gitignore" value="28" />
           <entry key="java" value="16409" />
           <entry key="json" value="2" />
-          <entry key="md" value="3388" />
+          <entry key="md" value="3444" />
           <entry key="xml" value="1943" />
           <entry key="yml" value="1282" />
         </counts>
@@ -47,7 +47,7 @@
           <entry key="Git file" value="28" />
           <entry key="JAVA" value="16409" />
           <entry key="JSON" value="2" />
-          <entry key="Markdown" value="3388" />
+          <entry key="Markdown" value="3444" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1943" />
           <entry key="YAML" value="1282" />
@@ -89,8 +89,8 @@
         <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="186">
-                <caret line="103" column="64" selection-start-line="103" selection-start-column="64" selection-end-line="103" selection-end-column="64" />
+              <first_editor relative-caret-position="204">
+                <caret line="104" column="72" selection-start-line="104" selection-start-column="72" selection-end-line="104" selection-end-column="72" />
               </first_editor>
               <second_editor />
             </state>
@@ -659,7 +659,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548159753277" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548159942052" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../peoplespringboot" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -745,7 +745,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62002000" />
+    <option name="totallyTimeSpent" value="62205000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1188,8 +1188,8 @@
     <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="186">
-            <caret line="103" column="64" selection-start-line="103" selection-start-column="64" selection-end-line="103" selection-end-column="64" />
+          <first_editor relative-caret-position="204">
+            <caret line="104" column="72" selection-start-line="104" selection-start-column="72" selection-end-line="104" selection-end-column="72" />
           </first_editor>
           <second_editor />
         </state>
