@@ -100,6 +100,21 @@ Extra: 额外信息
 
 
 
-|SQL                                  |含义              |备注                        |    
-|:----:                               |:----:           |:----:                      |
-|SHOW VARIABLES LIKE 'slow_query_log';|是否开启慢查询日志 |**ON表示开启; OFF表示关闭**|    
+- 查看慢查询日志存储路径(和MySQL版本相关)  
+`SHOW VARIABLES LIKE 'slow_query_log_file';`
+- 查看当前慢查询阈值(MySQL 默认是10(秒), 需要手动进行修改)  
+`SHOW VARIABLES LIKE 'long_query_time';`  
+若要对其进行修改, 一般会直接修改my.cnf配置文件, 也可以使用语句命令的方式:    
+`SET GLOBAL long_query_time = 0.2;`
+- 查看 是否将未使用索引的查询 记录到慢查询日志中(ON: 开启, OFF:关闭(通常会将其关闭))  
+`SHOW VARIABLES LIKE 'long_queries_not_using_indexes';`
+- 查看慢查询日志的存储方式(FILE: 文件(默认), TABLE: mysql.slow_log数据表)  
+`SHOW VARIABLES LIKE 'log_output';`  
+
+|SQL                                                  |含义                |备注                              |     
+|:----:                                               |:----:             |:----:                            |
+|SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
+|SHOW VARIABLES LIKE 'slow_query_log_file';           |查看慢查询日志存储路径 |和MySQL版本相关                    |
+|SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |MySQL默认是10(秒), 需要手动进行修改)|     
+|SHOW VARIABLES LIKE 'long_queries_not_using_indexes';|未使用索引的查询也被记录到查询日志中|OFF: 关闭, ON: 开启|  
+|SHOW VARIABLES LIKE 'log_output';                    |查看慢查询日志的存储方式|FILE: 文件(默认), TABLE: mysql.slow_log数据表|
