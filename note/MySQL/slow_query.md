@@ -100,6 +100,6 @@ Extra: 额外信息
 
 
 
-| SQL                                  |含义            |备注                       |    
-| :----                               |:----           |:----                      |
-| SHOW VARIABLES LIKE 'slow_query_log';|是否开启慢查询日志|**ON表示开启; OFF表示关闭**|    
+|SQL                                  |含义              |备注                        |    
+|:----:                               |:----:           |:----:                      |
+|SHOW VARIABLES LIKE 'slow_query_log';|是否开启慢查询日志 |**ON表示开启; OFF表示关闭**|    
