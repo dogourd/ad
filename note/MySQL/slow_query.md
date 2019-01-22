@@ -1,4 +1,4 @@
-<font size=13>慢查询</font>  
+<font color=#00ffff size=77>慢查询</font>  
 ## 什么是慢查询
 　　MySQL的慢查询日志是MySQL提供的一种日志记录, 它用来记录在MySQL中响应时间超过阈值的语句, 阈值指的是long_query_time 的值, 
 若SQL运行时间超过该值则会被记录到慢查询日志中。long_query_time的值默认为 10, 意思是运行 10 秒以上的SQL语句。默认情况下, MySQL数据库中没有启动慢查询日志, 所以需要我们手动设置这个参数。    
