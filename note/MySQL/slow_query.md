@@ -1,4 +1,4 @@
-# 慢查询
+<font size="3">慢查询</font>  
 ## 什么是慢查询
 　　MySQL的慢查询日志是MySQL提供的一种日志记录, 它用来记录在MySQL中响应时间超过阈值的语句, 阈值指的是long_query_time 的值, 
 若SQL运行时间超过该值则会被记录到慢查询日志中。long_query_time的值默认为 10, 意思是运行 10 秒以上的SQL语句。默认情况下, MySQL数据库中没有启动慢查询日志, 所以需要我们手动设置这个参数。    
@@ -46,7 +46,7 @@
 `mysqldumpslow -t 2 -s t -g "group by" slow_query_log_file`  
 \#&nbsp;按照时间排序的前10条里面含有左连接的查询语句。  
 `mysqldumpslow -s t -t 10 -g "left join" slow_query_log_file`  
-\#&nbsp;返回记录集最多的 10 个SQL
+\#&nbsp;返回记录集最多的 10 个SQL  
 `msyqldumpslow -s r -t 10 slow_query_log_file`  
 \#&nbsp;可以结合more一起使用, 避免一次显示过多的SQL语句  
 `mysqldumpslow -s r -t 20 slow_query_log_file | more`  
