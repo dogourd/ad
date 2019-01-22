@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ad-eureka
+
+server:
+  port: 8000
+eureka:
+  instance:
+    hostname: local.eureka.server
+  client:
+    fetch-registry: false            # 是否从eureka获取注册信息, 因为是单节点不用从其他eureka server同步节点数据
+    register-with-eureka: false      # 是否将自己注册到 eureka server
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
