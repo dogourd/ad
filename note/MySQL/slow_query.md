@@ -97,4 +97,9 @@ Extra: 额外信息
 ```    
 - select_type: 最常见的查询类型是SIMPLE, 这表示查询中没有子查询, 也没有UNION查询  
 - type: 这个字段表示  
-- **这是加粗**
+
+
+
+SQL|含义|备注
+----|------
+SHOW VARIABLES LIKE 'slow_query_log';|是否开启慢查询日志|**ON表示开启; OFF表示关闭**

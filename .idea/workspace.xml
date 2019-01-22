@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f338f3e-6f63-48db-81c0-e39123b5c245" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/note/MySQL/slow_query.md" beforeDir="false" afterPath="$PROJECT_DIR$/note/MySQL/slow_query.md" afterDir="false" />
     </list>
@@ -38,7 +37,7 @@
           <entry key="gitignore" value="28" />
           <entry key="java" value="16409" />
           <entry key="json" value="2" />
-          <entry key="md" value="3174" />
+          <entry key="md" value="3268" />
           <entry key="xml" value="1943" />
           <entry key="yml" value="1282" />
         </counts>
@@ -48,7 +47,7 @@
           <entry key="Git file" value="28" />
           <entry key="JAVA" value="16409" />
           <entry key="JSON" value="2" />
-          <entry key="Markdown" value="3174" />
+          <entry key="Markdown" value="3268" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1943" />
           <entry key="YAML" value="1282" />
@@ -86,23 +85,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor>
-                <caret column="27" selection-start-column="27" selection-end-column="27" />
+              <first_editor relative-caret-position="304">
+                <caret line="104" column="65" selection-start-line="104" selection-start-column="65" selection-end-line="104" selection-end-column="65" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -190,8 +180,8 @@
         <option value="$PROJECT_DIR$/ad-service/ad-sponsor/src/main/java/top/ezttf/ad/controller/CreativeController.java" />
         <option value="$PROJECT_DIR$/ad-service/ad-sponsor/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/ad-gateway/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/note/MySQL/slow_query.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/note/MySQL/slow_query.md" />
       </list>
     </option>
   </component>
@@ -669,7 +659,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548158450749" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548159368028" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../peoplespringboot" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -755,7 +745,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60927000" />
+    <option name="totallyTimeSpent" value="61615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1188,20 +1178,20 @@
       </provider>
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="27" selection-start-column="27" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note/MySQL/slow_query.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="304">
+            <caret line="104" column="65" selection-start-line="104" selection-start-column="65" selection-end-line="104" selection-end-column="65" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
