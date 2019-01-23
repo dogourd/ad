@@ -12,14 +12,15 @@
 |:----                                               |:----             |:----                            |
 |SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
 |SHOW VARIABLES LIKE 'slow_query_log_file';           |查看慢查询日志存储路径 |**和MySQL版本相关**                  |
-|SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |**MySQL默认是10(秒), 需要手动进行修改)**|     
+|SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |**MySQL默认是10(秒), 需要手动进行修改**|     
 |SHOW VARIABLES LIKE 'long_queries_not_using_indexes';|未使用索引的查询也被记录到查询日志中|**OFF: 关闭, ON: 开启**|  
 |SHOW VARIABLES LIKE 'log_output';                    |查看慢查询日志的存储方式|**FILE: 文件(默认), TABLE: mysql.slow_log数据表**|
-|SHOW GLOBAL STATUS LIKE 'slow_queries';              |查看慢查询记录条数     |** **|  
-
-若要对其进行修改, 一般会直接修改my.cnf配置文件, 也可以使用语句命令的方式:    
+|SHOW GLOBAL STATUS LIKE 'slow_queries';              |查看慢查询记录条数     ||  
+### 关于变量的说明
+- 若要对变量其进行修改, 可以会直接修改my.cnf配置文件(常见做法), 也可以使用语句命令的方式:    
 `SET GLOBAL long_query_time = 0.2;`
-## 慢查询的日志分析工具 (优化慢查询)
+- 日志记录到系统的专用日志记录表中, 要比记录到文件耗费更多的系统资源, 所以不要将慢查询日志记录到表中。
+## 慢查询的日志分析工具 (<font color=red>优化慢查询</font>)
 ### mysqldumpslow
 ### MySQL 内置了工具 mysqldumpslow 用于解析MySQL慢查询日志, 并打印其内容摘要
 - 使用语法  
@@ -91,10 +92,21 @@ rows: 当前查询一共扫描了多少行 (估值)
 fiftered: 查询条件过滤的数据百分比
 Extra: 额外信息
 ```    
-- select_type: 最常见的查询类型是SIMPLE, 这表示查询中没有子查询, 也没有UNION查询  
-- type: 这个字段表示  
-
-
+- **select_type: 最常见的查询类型是SIMPLE, 这表示查询中没有子查询, 也没有UNION查询**  
+- **type: 这个字段是判断查询是否高效的重要提示。可以判断查询是全表扫描还是索引扫描。例如: all表示全表扫描, 性能最差; range表示
+          使用索引范围扫描, 通常是where条件中带有数字对比的; index表示全索引扫描, 扫描索引而不扫描数据。**  
+- **possible_keys: 表示查询可能会使用到的索引, 但是并不表示一定会使用。真正的使用了哪些索引由key决定。**
+- **rows: MySQL优化器会估算此次查询需要扫描的数据记录数(行数), 这个值越小, 查询效率越高。**
+- **Extra: 这个是查询语句所对应的"额外信息", 常见的有:**  
+    - **Using filesort: 表示MySQL需额外的排序操作, 不能通过索引顺序达到排序效果。这样的查询是需要避免的, CPU消耗很高。**
+    - **Using where:　在查找使用索引的情况下, 需要回表去查询所需的数据。**
+    - **Using index: 表示查询在索引树中就可查找所需数据, 不用扫描表数据文件。**
+    - **Using temporary: 查询过程中会使用到临时表, 常见于ORDER BY、GROUP BY、JOIN等场景, 性能较低。**
+### 为什么会产生慢查询
+- **两张比较大的表进行JOIN, 但是没有给表的相应字段加索引。**
+- **表存在索引, 但是查询条件过多, 且字段顺序与索引顺序不一致。**
+- **对很多查询结果进行GROUP BY**
+- **......**
 
  
 
