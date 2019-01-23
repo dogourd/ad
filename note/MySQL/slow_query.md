@@ -9,7 +9,7 @@
 ## 慢查询相关的变量
 ### 查看变量的SQL语句
 |SQL                                                  |含义                |备注                              |     
-|:----:                                               |:----:             |:----:                            |
+|:----                                               |:----             |:----                            |
 |SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
 |SHOW VARIABLES LIKE 'slow_query_log_file';           |查看慢查询日志存储路径 |**和MySQL版本相关**                  |
 |SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |**MySQL默认是10(秒), 需要手动进行修改)**|     
