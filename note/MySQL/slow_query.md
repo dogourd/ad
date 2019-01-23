@@ -1,4 +1,4 @@
-<font color=#00ffff size=77>慢查询</font>  
+# 慢查询  
 ## 什么是慢查询
 　　MySQL的慢查询日志是MySQL提供的一种日志记录, 它用来记录在MySQL中响应时间超过阈值的语句, 阈值指的是long_query_time 的值, 
 若SQL运行时间超过该值则会被记录到慢查询日志中。long_query_time的值默认为 10, 意思是运行 10 秒以上的SQL语句。默认情况下, MySQL数据库中没有启动慢查询日志, 所以需要我们手动设置这个参数。    
@@ -8,21 +8,17 @@
 - 默认的阈值(long_query_time)是10, 对于用户级体验而言, 该值过大, 通常将其设置为0.2。
 ## 慢查询相关的变量
 ### 查看变量的SQL语句
-- 查看是否开启慢查询日志(ON: 开启, OFF: 关闭)  
-`SHOW VARIABLES LIKE 'slow_query_log';`
-- 查看慢查询日志存储路径(和MySQL版本相关)  
-`SHOW VARIABLES LIKE 'slow_query_log_file';`
-- 查看当前慢查询阈值(MySQL 默认是10(秒), 需要手动进行修改)  
-`SHOW VARIABLES LIKE 'long_query_time';`  
+|SQL                                                  |含义                |备注                              |     
+|:----:                                               |:----:             |:----:                            |
+|SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
+|SHOW VARIABLES LIKE 'slow_query_log_file';           |查看慢查询日志存储路径 |**和MySQL版本相关**                  |
+|SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |**MySQL默认是10(秒), 需要手动进行修改)**|     
+|SHOW VARIABLES LIKE 'long_queries_not_using_indexes';|未使用索引的查询也被记录到查询日志中|**OFF: 关闭, ON: 开启**|  
+|SHOW VARIABLES LIKE 'log_output';                    |查看慢查询日志的存储方式|**FILE: 文件(默认), TABLE: mysql.slow_log数据表**|
+|SHOW GLOBAL STATUS LIKE 'slow_queries';              |查看慢查询记录条数     |** **|  
+
 若要对其进行修改, 一般会直接修改my.cnf配置文件, 也可以使用语句命令的方式:    
 `SET GLOBAL long_query_time = 0.2;`
-- 查看 是否将未使用索引的查询 记录到慢查询日志中(ON: 开启, OFF:关闭(通常会将其关闭))  
-`SHOW VARIABLES LIKE 'long_queries_not_using_indexes';`
-- 查看慢查询日志的存储方式(FILE: 文件(默认), TABLE: mysql.slow_log数据表)  
-`SHOW VARIABLES LIKE 'log_output';`  
-考虑到日志记录到系统的专用日志表中, 要比记录到文件中耗费更多的系统资源, 所以应该存储方式设置为 FILE。
-- 查看慢查询记录条数  
-`SHOW GLOBAL STATUS LIKE 'slow_queries'`
 ## 慢查询的日志分析工具 (优化慢查询)
 ### mysqldumpslow
 ### MySQL 内置了工具 mysqldumpslow 用于解析MySQL慢查询日志, 并打印其内容摘要
@@ -102,10 +98,3 @@ Extra: 额外信息
 
  
 
-|SQL                                                  |含义                |备注                              |     
-|:----:                                               |:----:             |:----:                            |
-|SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
-|SHOW VARIABLES LIKE 'slow_query_log_file';           |查看慢查询日志存储路径 |**和MySQL版本相关**                  |
-|SHOW VARIABLES LIKE 'long_query_time';               |查看当前慢查询阈值    |**MySQL默认是10(秒), 需要手动进行修改)**|     
-|SHOW VARIABLES LIKE 'long_queries_not_using_indexes';|未使用索引的查询也被记录到查询日志中|**OFF: 关闭, ON: 开启**|  
-|SHOW VARIABLES LIKE 'log_output';                    |查看慢查询日志的存储方式|**FILE: 文件(默认), TABLE: mysql.slow_log数据表**|
