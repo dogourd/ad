@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ad-sponsor
+    name: eureka-client-ad-sponsor
   jpa:
     show-sql: true
     hibernate:

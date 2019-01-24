@@ -1,0 +1,38 @@
+server:
+  port: 7001
+  servlet:
+    context-path: /ad-serach
+spring:
+  application:
+    name: eureka-client-ad-search
+  datasource:
+    hikari:
+      username: yuwen
+      password: lyp82nlf
+      jdbc-url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false
+      driver-class-name: com.mysql.jdbc.Driver
+      maximum-pool-size: 10
+      minimum-idle: 3
+      connection-timeout: 30000
+      connection-test-query: select 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.format_sql: true
+    open-in-view: false
+
+eureka:
+  client:
+    service-url: http://local.eureka.server:8000/eureka/
+
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"                #暴露全部信息
