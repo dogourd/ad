@@ -1,14 +1,11 @@
-st=>start: Start:>http://www.google.com[blank]
-e=>end:>http://www.google.com
-op1=>operation: My Operation
-sub1=>subroutine: My Subroutine
-cond=>condition: Yes
-or No?:>http://www.google.com
-io=>inputoutput: catch something...
-para=>parallel: parallel tasks
-
-st->op1->cond
-cond(yes)->io->e
-cond(no)->para
-para(path1, bottom)->sub1(right)->op1
-para(path2, top)->op1
+1. 首先会启动多个 eureka server 组成一个高可用的服务注册中心, 或者说是服务注册集群, 那么其他的服务,不论是服务提供者service provider,
+还是服务消费者 service consumer都会作为一个 eureka cli上ent注册到eureka server(服务注册以及服务续约)。实现服务注册以及续约之后就会
+在eureka server上保存一些eureka client的一些元信息(ip地址,端口号,分区信息等)。这里service provider 和 service consumer的区别就是
+consumer 会通过远程调用的方式(ribbon/feign)调用一些provider提供的一些微服务接口。而consumer如果想调用provider提供的服务的话就可以通过
+eureka server集群获取其他服务的一些注册信息、元信息。拿到这些信息之后就可以通过ribbon或者feign去进行远程调用。
+- 其中ribbon是一个基于HTTP和TCP的客户端负载均衡器, 可以通过在客户端中配置ribbon server list来设置服务端列表去轮询访问以达到负载均衡的
+作用, 其主要功能就是在eureka server上拿取其他eureka client的配置信息, 然后去轮询访问不同的实例实现远程调用。 其思想比较简单, ribbon组件
+对我们访问的微服务的名称进行拦截。通过eureka server去拿到实例的ip地址和端口号然后再去调用
+- feign是一个声明式的web service客户端, 其使编写web service客户端变得更加简单。只需要使用feign来创建一个接口, 利用注解来配置它既可以
+完成。它具备可插拔的注解支持, 包括feign注解lis注解, feign也支持可插拔的编码和解码。spring cloud为feign增加了对spring mvc注解的支持
+还整合了ribbon 和 eureka来提供负载均衡的HTTP客户端的实现。即feign是基于ribbon去实现的

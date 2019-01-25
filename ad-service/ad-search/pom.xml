@@ -38,6 +38,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <!--作为eureka client注册到eureka注册中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -72,7 +76,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <!--<scope>runtime</scope>-->
         </dependency>
         <!--通用响应及异常处理-->
         <dependency>

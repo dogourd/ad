@@ -1,14 +1,16 @@
 package top.ezttf.ad;
 
-import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author yuwen
@@ -24,8 +26,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class SearchApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(SearchApplication.class)
-                .web(WebApplicationType.SERVLET)
-                .run(args);
+        SpringApplication.run(SpringApplication.class, args);
+    }
+
+    @Bean
+    @LoadBalanced                   // 开启负载均衡的功能
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

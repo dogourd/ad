@@ -9,12 +9,13 @@ spring:
     hikari:
       username: yuwen
       password: lyp82nlf
-      jdbc-url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false
       driver-class-name: com.mysql.jdbc.Driver
       maximum-pool-size: 10
       minimum-idle: 3
       connection-timeout: 30000
       connection-test-query: select 1
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false
   jpa:
     show-sql: true
     hibernate:
@@ -22,6 +23,10 @@ spring:
     properties:
       hibernate.format_sql: true
     open-in-view: false
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
 
 eureka:
   client:
