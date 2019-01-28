@@ -1,23 +1,26 @@
 package top.ezttf.ad.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 /**
- * @author yuwen
- * @date 2019/1/20
+ * Created by Qinyi.
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "creative")
+@Table(name = "ad_creative")
 public class Creative {
 
     @Id
@@ -33,9 +36,7 @@ public class Creative {
     @Column(name = "type", nullable = false)
     private Integer type;
 
-    /**
-     * 物料类型, 比如图片可以使png, jpg等等
-     */
+    /** 物料的类型, 比如图片可以是 bmp, jpg等等 */
     @Basic
     @Column(name = "material_type", nullable = false)
     private Integer materialType;
@@ -48,23 +49,17 @@ public class Creative {
     @Column(name = "width", nullable = false)
     private Integer width;
 
-    /**
-     * 物料大小
-     */
+    /** 物料大小 */
     @Basic
     @Column(name = "size", nullable = false)
     private Long size;
 
-    /**
-     * 持续时长, 只有视频不为 0
-     */
+    /** 持续时长, 只有视频不为0 */
     @Basic
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-    /**
-     * 审核状态
-     */
+    /** 审核状态 */
     @Basic
     @Column(name = "audit_status", nullable = false)
     private Integer auditStatus;
@@ -82,6 +77,6 @@ public class Creative {
     private LocalDateTime createTime;
 
     @Basic
-    @Column(name = "update_time", nullable = false)
+    @Column(name = "updateTime", nullable = false)
     private LocalDateTime updateTime;
 }

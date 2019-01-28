@@ -1,24 +1,18 @@
 package top.ezttf.ad.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import top.ezttf.ad.constant.CommonStatus;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
 /**
- * 推广计划
- *
- * @author yuwen
- * @date 2019/1/19
+ * Created by Qinyi.
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -58,13 +52,14 @@ public class AdPlan {
     @Column(name = "update_time", nullable = false)
     private LocalDateTime updateTime;
 
+    public AdPlan(Long userId, String planName,
+                  LocalDate startDate, LocalDate endDate) {
 
-    public AdPlan(Long userId, String planName, LocalDate startDate, LocalDate endDate) {
         this.userId = userId;
         this.planName = planName;
+        this.planStatus = CommonStatus.VALID.getStatus();
         this.startDate = startDate;
         this.endDate = endDate;
-        this.planStatus = CommonStatus.VALID.getStatus();
         this.createTime = LocalDateTime.now();
         this.updateTime = this.createTime;
     }

@@ -1,14 +1,12 @@
 package top.ezttf.ad.index.adplan;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 
 import java.time.LocalDate;
 
 /**
- * AdPlan 索引对象
+ * AdPlan 索引对象(推广计划)
  *
  * @author yuwen
  * @date 2019/1/25
@@ -17,17 +15,21 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class AdPlanObject {
 
     private Long planId;
     private Long userId;
     private Integer planStatus;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    public void update(AdPlanObject object) {
+    public AdPlanObject update(AdPlanObject object) {
         if (object == null) {
-            return;
+            return this;
         }
         if (object.getPlanId() != null) {
             this.planId = object.getPlanId();
@@ -44,5 +46,6 @@ public class AdPlanObject {
         if (object.getEndDate() != null) {
             this.endDate = object.getEndDate();
         }
+        return this;
     }
 }

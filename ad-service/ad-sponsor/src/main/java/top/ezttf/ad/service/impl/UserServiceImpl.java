@@ -39,7 +39,7 @@ public class UserServiceImpl implements IUserService {
             throw new AdUserException(Constants.ErrorMsg.SAME_NAME_USER_ERROR);
         }
         AdUser newUser = adUserRepository.save(
-                new AdUser(request.getUsername(), CommonUtils.sha512(request.getUsername()))
+                new AdUser(request.getUsername(), CommonUtils.md5(request.getUsername()))
         );
         return new CreateUserResponse(
                 newUser.getId(),
@@ -49,4 +49,6 @@ public class UserServiceImpl implements IUserService {
                 newUser.getUpdateTime()
         );
     }
+
+
 }

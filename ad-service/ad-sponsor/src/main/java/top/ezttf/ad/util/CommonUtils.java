@@ -29,6 +29,10 @@ public class CommonUtils {
         return Arrays.toString(DigestUtils.sha512(originString)).toUpperCase();
     }
 
+    public static String md5(String originString) {
+        return Arrays.toString(DigestUtils.md5(originString)).toUpperCase();
+    }
+
     public static LocalDate parseStringLocalDate(String dateString) throws AdException {
         for (String s : LOCAL_DATE_PARSE_PATTERN) {
             formatter = DateTimeFormatter.ofPattern(s, Locale.getDefault());

@@ -17,4 +17,5 @@ public interface IUserService {
      * @throws AdUserException
      */
     CreateUserResponse createUser(CreateUserRequest request) throws AdUserException;
+
 }

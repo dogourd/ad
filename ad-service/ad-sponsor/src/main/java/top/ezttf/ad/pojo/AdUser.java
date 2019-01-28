@@ -1,22 +1,17 @@
 package top.ezttf.ad.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import top.ezttf.ad.constant.CommonStatus;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
- * 用户账户
- *
- * @author yuwen
- * @date 2019/1/19
+ * Created by Qinyi.
  */
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -49,6 +44,7 @@ public class AdUser {
     private LocalDateTime updateTime;
 
     public AdUser(String username, String token) {
+
         this.username = username;
         this.token = token;
         this.userStatus = CommonStatus.VALID.getStatus();

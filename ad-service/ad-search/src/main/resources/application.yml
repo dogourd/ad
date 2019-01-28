@@ -9,11 +9,11 @@ spring:
     hikari:
       username: yuwen
       password: lyp82nlf
-      driver-class-name: com.mysql.jdbc.Driver
       maximum-pool-size: 10
       minimum-idle: 3
       connection-timeout: 30000
       connection-test-query: select 1
+      pool-name: hikari-pool
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false
   jpa:
@@ -27,10 +27,18 @@ spring:
     host: 127.0.0.1
     database: 0
     port: 6379
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 20
+        min-idle: 5
+        max-wait: 6000
+    timeout: 1000
 
 eureka:
   client:
-    service-url: http://local.eureka.server:8000/eureka/
+    service-url:
+      defaultZone: http://local.eureka.server:8000/eureka/
 
 feign:
   hystrix:
@@ -41,3 +49,6 @@ management:
     web:
       exposure:
         include: "*"                #暴露全部信息
+logging:
+  level:
+    top.ezttf.ad: debug

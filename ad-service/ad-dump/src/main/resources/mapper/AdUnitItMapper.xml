@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ezttf.ad.dao.AdUnitItMapper">
+  <resultMap id="BaseResultMap" type="top.ezttf.ad.pojo.AdUnitIt">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="unit_id" jdbcType="INTEGER" property="unitId" />
+    <result column="it_tag" jdbcType="VARCHAR" property="itTag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, unit_id, it_tag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ad_unit_it
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ad_unit_it
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    insert into ad_unit_it (id, unit_id, it_tag
+      )
+    values (#{id,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, #{itTag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    insert into ad_unit_it
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="itTag != null">
+        it_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="itTag != null">
+        #{itTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    update ad_unit_it
+    <set>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="itTag != null">
+        it_tag = #{itTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    update ad_unit_it
+    set unit_id = #{unitId,jdbcType=INTEGER},
+      it_tag = #{itTag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="top.ezttf.ad.pojo.AdUnitIt">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="unit_id" jdbcType="INTEGER" property="unitId" />
+    <result column="it_tag" jdbcType="VARCHAR" property="itTag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, unit_id, it_tag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ad_unit_it
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ad_unit_it
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    insert into ad_unit_it (id, unit_id, it_tag
+      )
+    values (#{id,jdbcType=INTEGER}, #{unitId,jdbcType=INTEGER}, #{itTag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    insert into ad_unit_it
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="itTag != null">
+        it_tag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="itTag != null">
+        #{itTag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    update ad_unit_it
+    <set>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="itTag != null">
+        it_tag = #{itTag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.AdUnitIt">
+    update ad_unit_it
+    set unit_id = #{unitId,jdbcType=INTEGER},
+      it_tag = #{itTag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

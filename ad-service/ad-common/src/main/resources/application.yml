@@ -1,0 +1,3 @@
+logging:
+  level:
+    top.ezttf.ad: debug

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ezttf.ad.dao.CreativeUnitMapper">
+  <resultMap id="BaseResultMap" type="top.ezttf.ad.pojo.CreativeUnit">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="creative_id" jdbcType="BIGINT" property="creativeId" />
+    <result column="unit_id" jdbcType="BIGINT" property="unitId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, creative_id, unit_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from creative_unit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from creative_unit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    insert into creative_unit (id, creative_id, unit_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{creativeId,jdbcType=BIGINT}, #{unitId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    insert into creative_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creativeId != null">
+        creative_id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creativeId != null">
+        #{creativeId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    update creative_unit
+    <set>
+      <if test="creativeId != null">
+        creative_id = #{creativeId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    update creative_unit
+    set creative_id = #{creativeId,jdbcType=BIGINT},
+      unit_id = #{unitId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="top.ezttf.ad.pojo.CreativeUnit">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="creative_id" jdbcType="BIGINT" property="creativeId" />
+    <result column="unit_id" jdbcType="BIGINT" property="unitId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, creative_id, unit_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from creative_unit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from creative_unit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    insert into creative_unit (id, creative_id, unit_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{creativeId,jdbcType=BIGINT}, #{unitId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    insert into creative_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creativeId != null">
+        creative_id,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="creativeId != null">
+        #{creativeId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    update creative_unit
+    <set>
+      <if test="creativeId != null">
+        creative_id = #{creativeId,jdbcType=BIGINT},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.CreativeUnit">
+    update creative_unit
+    set creative_id = #{creativeId,jdbcType=BIGINT},
+      unit_id = #{unitId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
