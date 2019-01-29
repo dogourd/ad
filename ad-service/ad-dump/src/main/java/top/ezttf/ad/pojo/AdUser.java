@@ -17,7 +17,7 @@ public class AdUser {
 
     private String token;
 
-    private Byte userStatus;
+    private Integer userStatus;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;

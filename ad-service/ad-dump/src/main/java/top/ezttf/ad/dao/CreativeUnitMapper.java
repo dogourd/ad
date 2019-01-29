@@ -1,7 +1,10 @@
 package top.ezttf.ad.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import top.ezttf.ad.dump.table.AdCreativeUnitTable;
 import top.ezttf.ad.pojo.CreativeUnit;
+
+import java.util.List;
 
 @Mapper
 public interface CreativeUnitMapper {
@@ -16,4 +19,9 @@ public interface CreativeUnitMapper {
     int updateByPrimaryKeySelective(CreativeUnit record);
 
     int updateByPrimaryKey(CreativeUnit record);
+
+
+    List<CreativeUnit> selectAll();
+
+    List<AdCreativeUnitTable> selectCreativeUnitTable();
 }

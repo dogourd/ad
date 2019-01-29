@@ -16,9 +16,9 @@ public class AdUnit {
 
     private String unitName;
 
-    private Byte unitStatus;
+    private Integer unitStatus;
 
-    private Byte positionType;
+    private Integer positionType;
 
     private Long budget;
 

@@ -6,9 +6,16 @@
     <result column="unit_id" jdbcType="INTEGER" property="unitId" />
     <result column="it_tag" jdbcType="VARCHAR" property="itTag" />
   </resultMap>
+    <resultMap id="TableResultMap" type="top.ezttf.ad.dump.table.AdUnitItTable">
+        <result column="unit_id" jdbcType="INTEGER" property="unitId"/>
+        <result column="it_tag" jdbcType="VARCHAR" property="itTag"/>
+    </resultMap>
   <sql id="Base_Column_List">
     id, unit_id, it_tag
   </sql>
+    <sql id="Table_Column_List">
+        unit_id, it_tag
+    </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -68,4 +75,13 @@
       it_tag = #{itTag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+
+    <select id="selectAdUnitItTable" resultMap="TableResultMap">
+        SELECT
+        <include refid="Table_Column_List"/>
+        FROM ad_unit_it
+    </select>
 </mapper>

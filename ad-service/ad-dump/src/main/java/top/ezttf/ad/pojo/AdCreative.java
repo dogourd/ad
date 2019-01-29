@@ -14,9 +14,9 @@ public class AdCreative {
 
     private String name;
 
-    private Byte type;
+    private Integer type;
 
-    private Byte materialType;
+    private Integer materialType;
 
     private Integer height;
 
@@ -26,7 +26,7 @@ public class AdCreative {
 
     private Integer duration;
 
-    private Byte auditStatus;
+    private Integer auditStatus;
 
     private Long userId;
 

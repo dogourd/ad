@@ -1,7 +1,10 @@
 package top.ezttf.ad.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import top.ezttf.ad.dump.table.AdUnitDistrictTable;
 import top.ezttf.ad.pojo.AdUnitDistrict;
+
+import java.util.List;
 
 @Mapper
 public interface AdUnitDistrictMapper {
@@ -16,4 +19,7 @@ public interface AdUnitDistrictMapper {
     int updateByPrimaryKeySelective(AdUnitDistrict record);
 
     int updateByPrimaryKey(AdUnitDistrict record);
+
+
+    List<AdUnitDistrictTable> selectAdUnitDistrictTable();
 }
