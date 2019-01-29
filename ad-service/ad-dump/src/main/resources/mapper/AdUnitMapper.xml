@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.ezttf.ad.dao.AdUnitMapper">
+  <resultMap id="BaseResultMap" type="top.ezttf.ad.pojo.AdUnit">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plan_id" jdbcType="BIGINT" property="planId" />
+    <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
+    <result column="unit_status" jdbcType="TINYINT" property="unitStatus" />
+    <result column="position_type" jdbcType="TINYINT" property="positionType" />
+    <result column="budget" jdbcType="BIGINT" property="budget" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plan_id, unit_name, unit_status, position_type, budget, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ad_unit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ad_unit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="top.ezttf.ad.pojo.AdUnit">
+    insert into ad_unit (id, plan_id, unit_name, 
+      unit_status, position_type, budget, 
+      create_time, update_time)
+    values (#{id,jdbcType=BIGINT}, #{planId,jdbcType=BIGINT}, #{unitName,jdbcType=VARCHAR}, 
+      #{unitStatus,jdbcType=TINYINT}, #{positionType,jdbcType=TINYINT}, #{budget,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.AdUnit">
+    insert into ad_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="planId != null">
+        plan_id,
+      </if>
+      <if test="unitName != null">
+        unit_name,
+      </if>
+      <if test="unitStatus != null">
+        unit_status,
+      </if>
+      <if test="positionType != null">
+        position_type,
+      </if>
+      <if test="budget != null">
+        budget,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="planId != null">
+        #{planId,jdbcType=BIGINT},
+      </if>
+      <if test="unitName != null">
+        #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitStatus != null">
+        #{unitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="positionType != null">
+        #{positionType,jdbcType=TINYINT},
+      </if>
+      <if test="budget != null">
+        #{budget,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.AdUnit">
+    update ad_unit
+    <set>
+      <if test="planId != null">
+        plan_id = #{planId,jdbcType=BIGINT},
+      </if>
+      <if test="unitName != null">
+        unit_name = #{unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="unitStatus != null">
+        unit_status = #{unitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="positionType != null">
+        position_type = #{positionType,jdbcType=TINYINT},
+      </if>
+      <if test="budget != null">
+        budget = #{budget,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.AdUnit">
+    update ad_unit
+    set plan_id = #{planId,jdbcType=BIGINT},
+      unit_name = #{unitName,jdbcType=VARCHAR},
+      unit_status = #{unitStatus,jdbcType=TINYINT},
+      position_type = #{positionType,jdbcType=TINYINT},
+      budget = #{budget,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

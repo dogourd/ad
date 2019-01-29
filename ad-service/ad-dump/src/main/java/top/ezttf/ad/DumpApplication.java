@@ -1,5 +1,6 @@
 package top.ezttf.ad;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,6 +15,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableCircuitBreaker
 @EnableFeignClients
 @EnableEurekaClient
+@MapperScan(basePackages = {
+        "top.ezttf.ad.dao"
+})
 @SpringBootApplication
 public class DumpApplication {
 

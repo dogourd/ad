@@ -40,6 +40,14 @@ mybatis:
     use-generated-keys: true
     map-underscore-to-camel-case: true
     default-statement-timeout: 30000
-    interceptors: com.github.pagehelper.PageInterceptor
   type-aliases-package: top.ezttf.ad.pojo
 
+logging:
+  level:
+    top.ezttf.ad: debug
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  row-bounds-with-count: false
