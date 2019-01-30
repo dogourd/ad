@@ -1,13 +1,20 @@
-# 慢查询  
+# 慢查询
+
 ## 什么是慢查询
+
 　　MySQL的慢查询日志是MySQL提供的一种日志记录, 它用来记录在MySQL中响应时间超过阈值的语句, 阈值指的是long_query_time 的值, 
-若SQL运行时间超过该值则会被记录到慢查询日志中。long_query_time的值默认为 10, 意思是运行 10 秒以上的SQL语句。默认情况下, MySQL数据库中没有启动慢查询日志, 所以需要我们手动设置这个参数。    
+若SQL运行时间超过该值则会被记录到慢查询日志中。long_query_time的值默认为 10, 意思是运行 10 秒以上的SQL语句。默认情况下, 
+MySQL数据库中没有启动慢查询日志, 所以需要我们手动设置这个参数。
+    
 ## 慢查询需要知道的点
 - 企业级开发中, 慢查询日志是会打开的。这样做的同时也会对性能造成一定的影响。
 - 慢查询日志支持将日志记录写入文件, 也支持将日志记录写入数据表。
 - 默认的阈值(long_query_time)是10, 对于用户级体验而言, 该值过大, 通常将其设置为0.2。
+
 ## 慢查询相关的变量
+
 ### 查看变量的SQL语句
+
 |SQL                                                  |含义                |备注                              |     
 |:----                                               |:----             |:----                            |
 |SHOW VARIABLES LIKE 'slow_query_log';                |是否开启慢查询日志    |**ON表示开启; OFF表示关闭**       | 
@@ -16,12 +23,17 @@
 |SHOW VARIABLES LIKE 'long_queries_not_using_indexes';|未使用索引的查询也被记录到查询日志中|**OFF: 关闭, ON: 开启**|  
 |SHOW VARIABLES LIKE 'log_output';                    |查看慢查询日志的存储方式|**FILE: 文件(默认), TABLE: mysql.slow_log数据表**|
 |SHOW GLOBAL STATUS LIKE 'slow_queries';              |查看慢查询记录条数     ||  
+
 ### 关于变量的说明
+
 - 若要对变量其进行修改, 可以会直接修改my.cnf配置文件(常见做法), 也可以使用语句命令的方式:    
 `SET GLOBAL long_query_time = 0.2;`
 - 日志记录到系统的专用日志记录表中, 要比记录到文件耗费更多的系统资源, 所以不要将慢查询日志记录到表中。
+
 ## 慢查询的日志分析工具 (<font color=red>优化慢查询</font>)
+
 ### mysqldumpslow
+
 ### MySQL 内置了工具 mysqldumpslow 用于解析MySQL慢查询日志, 并打印其内容摘要
 - 使用语法  
 `mysqldumpslow [options] [log_file ...]`
