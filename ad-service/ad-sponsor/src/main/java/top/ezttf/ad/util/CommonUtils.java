@@ -30,7 +30,7 @@ public class CommonUtils {
     }
 
     public static String md5(String originString) {
-        return Arrays.toString(DigestUtils.md5(originString)).toUpperCase();
+        return DigestUtils.md5Hex(originString).toUpperCase();
     }
 
     public static LocalDate parseStringLocalDate(String dateString) throws AdException {
