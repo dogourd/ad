@@ -145,7 +145,7 @@ public class AdLevelDataHandler {
         );
     }
 
-    public static void handLevel4(AdUnitItTable unitItTable, OpType type) {
+    public static void handleLevel4(AdUnitItTable unitItTable, OpType type) {
         if (type == OpType.UPDATE) {
             log.error("it index not support update");
             return;
@@ -166,7 +166,7 @@ public class AdLevelDataHandler {
         );
     }
 
-    public static void handLevel4(AdUnitKeywordTable keywordTable, OpType type) {
+    public static void handleLevel4(AdUnitKeywordTable keywordTable, OpType type) {
         if (type == OpType.UPDATE) {
             log.error("keyword index update is not supported");
             return;

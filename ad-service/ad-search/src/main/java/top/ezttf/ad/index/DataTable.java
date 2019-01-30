@@ -25,6 +25,10 @@ public class DataTable implements ApplicationContextAware, PriorityOrdered {
         DataTable.applicationContext = applicationContext;
     }
 
+    /**
+     * 全量索引的实现类{@link IndexFileLoader}需要依赖该bean, 此处直接将注册优先级调到最高
+     * @return
+     */
     @Override
     public int getOrder() {
         return PriorityOrdered.HIGHEST_PRECEDENCE;
