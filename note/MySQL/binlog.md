@@ -37,23 +37,23 @@
 
 - **管理binlog的相关SQL语句**
   
-|SQL语句|语句含义|
-|:----|:----|
-|SHOW MASTER LOGS;|查看所有binlog的日志列表|
-|SHOW MASTER STATUS;|查看最后一个binlog日志的编号名称, 及最后一个时间结束的位置(pos)|
-|FLUSH LOGS;|刷新binlog, 此刻开始产生一个新编号的binlog日志文件|
-|RESET MASTER;|清空所有的binlog日志|
+  |SQL语句|语句含义|
+  |:----|:----|
+  |SHOW MASTER LOGS;|查看所有binlog的日志列表|
+  |SHOW MASTER STATUS;|查看最后一个binlog日志的编号名称, 及最后一个时间结束的位置(pos)|
+  |FLUSH LOGS;|刷新binlog, 此刻开始产生一个新编号的binlog日志文件|
+  |RESET MASTER;|清空所有的binlog日志|
   
 - **查看binlog相关的SQL语句**
 　　`SHOW BINLOG EVENTS [IN 'log.name'] [FROM pos] [LIMIT [OFFSET,] ROW_COUNT];`
 
-|SQL语句|语句含义|
-|:----|:----|
-|SHOW BINLOG EVENTS;|查看第一个binlog日志|
-|SHOW BINLOG EVENTS IN 'binlog.000030';|查看指定的Binlog日志|
-|SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931;|从指定的位置, 查看指定的binlog日志|
-|SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931 LIMIT 2;|从指定的位置开始, 查看指定的binlog日志, 限制查询的条数|
-|SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931 LIMIT 1, 2;|从指定的位置开始, 带有偏移, 查看指定的binlog日志, 限制查询的条数|
+  |SQL语句|语句含义|
+  |:----|:----|
+  |SHOW BINLOG EVENTS;|查看第一个binlog日志|
+  |SHOW BINLOG EVENTS IN 'binlog.000030';|查看指定的Binlog日志|
+  |SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931;|从指定的位置, 查看指定的binlog日志|
+  |SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931 LIMIT 2;|从指定的位置开始, 查看指定的binlog日志, 限制查询的条数|
+  |SHOW BINLOG EVENTS IN 'binlog.000030' FROM 931 LIMIT 1, 2;|从指定的位置开始, 带有偏移, 查看指定的binlog日志, 限制查询的条数|
 
 - **binlog中的event_type** (https://dev.mysql.com/doc/internals/en/event-classes-and-types.html)
     - QUERY_EVENT: 与数据无关的操作, begin、drop table、truncate table等  
@@ -63,7 +63,7 @@
     - UPDATE_ROWS_EVENT: 更新数据, 即UPDATE操作
     - DELETE_ROWS_EVENT: 删除数据, 即DELETE操作
 
-- 查询数据表中列索引和列名的对应关系
+- **查询数据表中列索引和列名的对应关系**
     ```
     SELECT table_schema, table_name, column_name, ordinal_position
     FROM information_schema.columns 
