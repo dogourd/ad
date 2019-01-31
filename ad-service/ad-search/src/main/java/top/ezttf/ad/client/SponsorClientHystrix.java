@@ -25,6 +25,6 @@ public class SponsorClientHystrix implements ISponsorClient{
     @Override
     public CommonResponse<List<AdPlan>> getAdPlanList(AdPlanGetRequest request) {
 
-        return new CommonResponse<>(ResponseCode.ERROR.getCode(), Constants.EUREKA_CLIENT_AD_SPONSOR_ERROR);
+        return new CommonResponse<>(ResponseCode.ERROR.getCode(), Constants.ErrorMsg.EUREKA_CLIENT_AD_SPONSOR_ERROR);
     }
 }

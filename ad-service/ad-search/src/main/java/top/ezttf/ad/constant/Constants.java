@@ -6,5 +6,7 @@ package top.ezttf.ad.constant;
  */
 public class Constants {
 
-    public static final String EUREKA_CLIENT_AD_SPONSOR_ERROR = "eureka-client-ad-sponsor error";
+    public static class ErrorMsg {
+        public static final String EUREKA_CLIENT_AD_SPONSOR_ERROR = "eureka-client-ad-sponsor error";
+    }
 }
