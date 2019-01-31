@@ -3,7 +3,7 @@ package top.ezttf.ad.index.adplan;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * AdPlan 索引对象(推广计划)
@@ -22,10 +22,10 @@ public class AdPlanObject {
     private Long planId;
     private Long userId;
     private Integer planStatus;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate startDate;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime endDate;
 
     public AdPlanObject update(AdPlanObject object) {
         if (object == null) {

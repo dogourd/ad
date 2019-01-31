@@ -65,8 +65,8 @@ public class AdPlanServiceImpl implements IAdPlanService {
                 new AdPlan(
                         adPlanRequest.getUserId(),
                         adPlanRequest.getPlanName(),
-                        CommonUtils.parseStringLocalDate(adPlanRequest.getStartDate()),
-                        CommonUtils.parseStringLocalDate(adPlanRequest.getEndDate())
+                        CommonUtils.parseStringLocalDateTime(adPlanRequest.getStartDate()),
+                        CommonUtils.parseStringLocalDateTime(adPlanRequest.getEndDate())
                 )
         );
         return new AdPlanResponse(newAdPlan.getId(), newAdPlan.getPlanName());
@@ -100,10 +100,10 @@ public class AdPlanServiceImpl implements IAdPlanService {
             oldPlan.setPlanName(adPlanRequest.getPlanName());
         }
         if (adPlanRequest.getStartDate() != null) {
-            oldPlan.setStartDate(CommonUtils.parseStringLocalDate(adPlanRequest.getStartDate()));
+            oldPlan.setStartDate(CommonUtils.parseStringLocalDateTime(adPlanRequest.getStartDate()));
         }
         if (adPlanRequest.getEndDate() != null) {
-            oldPlan.setEndDate(CommonUtils.parseStringLocalDate(adPlanRequest.getEndDate()));
+            oldPlan.setEndDate(CommonUtils.parseStringLocalDateTime(adPlanRequest.getEndDate()));
         }
         oldPlan.setUpdateTime(LocalDateTime.now());
         oldPlan = adPlanRepository.save(oldPlan);

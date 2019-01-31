@@ -18,7 +18,7 @@ import top.ezttf.ad.index.DataTable;
 import top.ezttf.ad.index.adplan.AdPlanObject;
 import top.ezttf.ad.index.keyword.UnitKeywordIndex;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -71,7 +71,7 @@ public class TestRedisTemplate {
     @Test
     public void testType() {
         AdPlanObject oldAdPlanObject = new AdPlanObject(1L, 1L, 1,
-                LocalDate.now(), LocalDate.of(2019, 1, 1));
+                LocalDateTime.now(), LocalDateTime.of(2019, 1, 1, 0, 0,0 ));
         redisTemplate.opsForValue().set("adPlanObject", oldAdPlanObject);
         AdPlanObject newAdPlanObject = (AdPlanObject) redisTemplate.opsForValue().get("adPlanObject");
         assert newAdPlanObject != null;
@@ -105,11 +105,11 @@ public class TestRedisTemplate {
         // result is
         // top.ezttf.ad.redis.TestRedisTemplate     : the set is [1, 2, 3, 4, 5, 6, 7]
         AdPlanObject adPlanObject1 = new AdPlanObject(1L, 2L, 3,
-                LocalDate.now(), LocalDate.now());
+                LocalDateTime.now(), LocalDateTime.now());
         AdPlanObject adPlanObject2 = new AdPlanObject(2L, 3L, 4,
-                LocalDate.now(), LocalDate.now());
+                LocalDateTime.now(), LocalDateTime.now());
         AdPlanObject adPlanObject3 = new AdPlanObject(3L, 4L, 5,
-                LocalDate.now(), LocalDate.now());
+                LocalDateTime.now(), LocalDateTime.now());
         Long result = redisTemplate.opsForSet().add("set_object_key", adPlanObject1, adPlanObject2, adPlanObject3);
         log.debug("object set count is {}", result);
         Set<Object> objectSet = redisTemplate.opsForSet().members("set_object_key");

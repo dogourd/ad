@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -22,8 +21,8 @@ public class AdPlan {
     private Long userId;
     private String planName;
     private Integer planStatus;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }

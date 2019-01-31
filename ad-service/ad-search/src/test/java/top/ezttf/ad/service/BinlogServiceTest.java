@@ -59,5 +59,9 @@ public class BinlogServiceTest {
         // 15:39:17.459 [main] DEBUG top.ezttf.ad.service.BinlogServiceTest - WriteRowsEventData{tableId=122, includedColumns={0, 1, 2}, rows=[
         //     [13, 10, 标志]
         // ]}
+
+        // WriteRowsEventData{tableId=118, includedColumns={0, 1, 2, 3, 4, 5, 6, 7}, rows=[
+        //    [11, 666, plan, 1, 2019-01-01, 2019-01-01, Tue Jan 01 08:00:00 CST 2019, Tue Jan 01 08:00:00 CST 2019]
+        //]}
     }
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import top.ezttf.ad.constant.CommonStatus;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -38,11 +37,11 @@ public class AdPlan {
 
     @Basic
     @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    private LocalDateTime startDate;
 
     @Basic
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private LocalDateTime endDate;
 
     @Basic
     @Column(name = "create_time", nullable = false)
@@ -53,7 +52,7 @@ public class AdPlan {
     private LocalDateTime updateTime;
 
     public AdPlan(Long userId, String planName,
-                  LocalDate startDate, LocalDate endDate) {
+                  LocalDateTime startDate, LocalDateTime endDate) {
 
         this.userId = userId;
         this.planName = planName;
