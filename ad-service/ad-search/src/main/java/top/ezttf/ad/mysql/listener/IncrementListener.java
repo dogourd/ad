@@ -6,10 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import top.ezttf.ad.mysql.constant.DBConstant;
 import top.ezttf.ad.mysql.binlog.BinlogRowData;
+import top.ezttf.ad.mysql.constant.DBConstant;
 import top.ezttf.ad.mysql.constant.OpType;
-import top.ezttf.ad.mysql.dto.MySQLRowData;
+import top.ezttf.ad.mysql.dto.MysqlRowData;
 import top.ezttf.ad.mysql.dto.TableTemplate;
 import top.ezttf.ad.sender.ISender;
 
@@ -24,16 +24,18 @@ import java.util.List;
 @Component
 public class IncrementListener implements IListener {
 
+    /**
+     * {@link top.ezttf.ad.sender.index.IndexSender}
+     */
     private final ISender iSender;
     private final AggregationListener aggregationListener;
 
-    // TODO ISender可能有多个bean实例, 后期指明Qualifier
     @Autowired
     public IncrementListener(
-            @Qualifier(value = "sender") ISender iSender,
-            AggregationListener aggregationListener) {
-        this.iSender = iSender;
+            AggregationListener aggregationListener,
+            @Qualifier(value = "indexSender") ISender iSender) {
         this.aggregationListener = aggregationListener;
+        this.iSender = iSender;
     }
     /**
      * 注册需要处理的表
@@ -57,7 +59,7 @@ public class IncrementListener implements IListener {
         EventType eventType = eventData.getEventType();
 
         // 将数据包装为需要投递的数据格式 MySQLRowData
-        MySQLRowData mySQLRowData = new MySQLRowData();
+        MysqlRowData mySQLRowData = new MysqlRowData();
         mySQLRowData.setTableName(tableTemplate.getTableName());
         mySQLRowData.setLevel(tableTemplate.getLevel());
         mySQLRowData.setOpType(OpType.to(eventType));

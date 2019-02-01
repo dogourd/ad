@@ -1,14 +1,12 @@
 package top.ezttf.ad.withoutspring;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yuwen
@@ -32,5 +30,17 @@ public class MapTest {
         map.put("2", "3");
         log.debug("newMap is {}", newMap);
         log.debug("list is {}", list);
+    }
+
+    @Test
+    public void test() {
+        Map<Integer, Integer> map = Maps.newHashMap();
+        for (int i = 0; i < 5; i++) {
+            map.put(i, i);
+        }
+        List<Integer> list = new ArrayList<>(new HashSet<>(map.keySet()));
+        for (int i = 0; i < 5; i++) {
+            list.remove(list.get(list.size() - 1));
+        }
     }
 }

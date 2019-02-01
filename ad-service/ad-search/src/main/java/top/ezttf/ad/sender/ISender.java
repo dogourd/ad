@@ -1,6 +1,6 @@
 package top.ezttf.ad.sender;
 
-import top.ezttf.ad.mysql.dto.MySQLRowData;
+import top.ezttf.ad.mysql.dto.MysqlRowData;
 
 /**
  * 投递增量数据
@@ -10,6 +10,6 @@ import top.ezttf.ad.mysql.dto.MySQLRowData;
  */
 public interface ISender {
 
-    void sender(MySQLRowData rowData);
+    void sender(MysqlRowData rowData);
 
 }
