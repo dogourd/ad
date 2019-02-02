@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import top.ezttf.ad.index.DataTable;
 import top.ezttf.ad.index.adplan.AdPlanObject;
 import top.ezttf.ad.index.keyword.UnitKeywordIndex;
+import top.ezttf.ad.util.RedisUtils;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -142,6 +143,15 @@ public class TestRedisTemplate {
         log.debug("use dataTable get UnitKeywordIndex result is {}", longSet);
     }
 
+
+    @Test
+    public void testScan() {
+        Cursor<?> cursor = RedisUtils.scan(redisTemplate, "*", -1);
+        while (cursor.hasNext()) {
+            Object next = cursor.next();
+            log.debug("result is {}", next);
+        }
+    }
 
 
 }

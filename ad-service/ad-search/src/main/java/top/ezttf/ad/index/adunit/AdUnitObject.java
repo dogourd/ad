@@ -3,6 +3,8 @@ package top.ezttf.ad.index.adunit;
 import lombok.*;
 import top.ezttf.ad.index.adplan.AdPlanObject;
 
+import static top.ezttf.ad.index.adunit.AdUnitConstants.PositionType.*;
+
 /**
  * 推广单元 索引对象
  *
@@ -42,5 +44,45 @@ public class AdUnitObject {
             this.adPlanObject = object.getAdPlanObject();
         }
         return this;
+    }
+
+
+    private static boolean isKaiPing(int positionType) {
+        return (positionType & KAI_PING) > 0;
+    }
+
+    private static boolean isTiePian(int positionType) {
+        return (positionType & AdUnitConstants.PositionType.TIE_PIAN) > 0;
+    }
+
+    private static boolean isTiePianMiddle(int positionType) {
+        return (positionType & AdUnitConstants.PositionType.TIE_PIAN_MIDDLE) > 0;
+    }
+
+    private static boolean isTiePianPause(int positionType) {
+        return (positionType & AdUnitConstants.PositionType.TIE_PIAN_PAUSE) > 0;
+    }
+
+    private static boolean isTiePianPost(int positionType) {
+        return (positionType & AdUnitConstants.PositionType.TIE_PIAN_POST) > 0;
+    }
+
+
+
+    public static boolean isAdSlotTypeOk(int adSlotType, int positionType) {
+        switch (adSlotType) {
+            case KAI_PING:
+                return isKaiPing(positionType);
+            case TIE_PIAN:
+                return isTiePian(positionType);
+            case TIE_PIAN_MIDDLE:
+                return isTiePianMiddle(positionType);
+            case TIE_PIAN_PAUSE:
+                return isTiePianPause(positionType);
+            case TIE_PIAN_POST:
+                return isTiePianPost(positionType);
+            default:
+                return false;
+        }
     }
 }

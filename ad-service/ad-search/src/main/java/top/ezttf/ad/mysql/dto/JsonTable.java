@@ -1,5 +1,6 @@
 package top.ezttf.ad.mysql.dto;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class JsonTable {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Column {
+        @JSONField(name = "column")
         private String columnName;
     }
 }

@@ -2,6 +2,7 @@ package top.ezttf.ad.mysql.listener;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class AggregationListener implements BinaryLogClient.EventListener {
      * 同一个监听器 可以多次实现监听不同的数据库, 数据表
      * 数据库的每张表的监听器也都可以监听不同的事件
      */
-    private Map<String, IListener> listenerMap;
+    private Map<String, IListener> listenerMap = Maps.newHashMap();
 
     // 载入模板信息
     private final TemplateHolder templateHolder;

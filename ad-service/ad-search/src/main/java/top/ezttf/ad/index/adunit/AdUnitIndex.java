@@ -1,10 +1,13 @@
 package top.ezttf.ad.index.adunit;
 
+import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import top.ezttf.ad.index.IIndexAware;
+
+import java.util.Set;
 
 /**
  * 推广单元索引实现
@@ -32,6 +35,11 @@ public class AdUnitIndex implements IIndexAware<Long, AdUnitObject> {
     public AdUnitObject get(Long key) {
         String redisKey = AD_UNIT_INDEX_PREFIX + key;
         return (AdUnitObject) redisTemplate.opsForValue().get(redisKey);
+    }
+
+    public Set<Long> match(int positionType) {
+        Set<Long> adUnitIds = Sets.newHashSet();
+        return null;
     }
 
     @Override

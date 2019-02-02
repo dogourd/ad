@@ -4,47 +4,47 @@
     {
       "tableName": "ad_plan",
       "level": 2,
-      "insert": [
+      "insertList": [
         {"column": "id"},
         {"column": "user_id"},
         {"column": "plan_status"},
         {"column": "start_date"},
         {"column": "end_date"}
       ],
-      "update": [
+      "updateList": [
         {"column": "id"},
         {"column": "user_id"},
         {"column": "plan_status"},
         {"column": "start_date"},
         {"column": "end_date"}
       ],
-      "delete": [
+      "deleteList": [
         {"column": "id"}
       ]
     },
     {
       "tableName": "ad_unit",
       "level": 3,
-      "insert": [
+      "insertList": [
         {"column": "id"},
         {"column": "unit_status"},
         {"column": "position_type"},
         {"column": "plan_id"}
       ],
-      "update": [
+      "updateList": [
         {"column": "id"},
         {"column": "unit_status"},
         {"column": "position_type"},
         {"column": "plan_id"}
       ],
-      "delete": [
+      "deleteList": [
         {"column": "id"}
       ]
     },
     {
       "tableName": "ad_creative",
       "level": 2,
-      "insert": [
+      "insertList": [
         {"column": "id"},
         {"column": "type"},
         {"column": "material_type"},
@@ -53,7 +53,7 @@
         {"column": "audit_status"},
         {"column": "url"}
       ],
-      "update": [
+      "updateList": [
         {"column": "id"},
         {"column": "type"},
         {"column": "material_type"},
@@ -62,20 +62,20 @@
         {"column": "audit_status"},
         {"column": "url"}
       ],
-      "delete": [
+      "deleteList": [
         {"column": "id"}
       ]
     },
     {
       "tableName": "creative_unit",
       "level": 3,
-      "insert": [
+      "insertList": [
         {"column": "creative_id"},
         {"column": "unit_id"}
       ],
-      "update": [
+      "updateList": [
       ],
-      "delete": [
+      "deleteList": [
         {"column": "creative_id"},
         {"column": "unit_id"}
       ]
@@ -83,14 +83,14 @@
     {
       "tableName": "ad_unit_district",
       "level": 4,
-      "insert": [
+      "insertList": [
         {"column": "unit_id"},
         {"column": "province"},
         {"column": "city"}
       ],
-      "update": [
+      "updateList": [
       ],
-      "delete": [
+      "deleteList": [
         {"column": "unit_id"},
         {"column": "province"},
         {"column": "city"}
@@ -99,13 +99,13 @@
     {
       "tableName": "ad_unit_it",
       "level": 4,
-      "insert": [
+      "insertList": [
         {"column": "unit_id"},
         {"column": "it_tag"}
       ],
-      "update": [
+      "updateList": [
       ],
-      "delete": [
+      "deleteList": [
         {"column": "unit_id"},
         {"column": "it_tag"}
       ]
@@ -113,13 +113,13 @@
     {
       "tableName": "ad_unit_keyword",
       "level": 4,
-      "insert": [
+      "insertList": [
         {"column": "unit_id"},
         {"column": "keyword"}
       ],
-      "update": [
+      "updateList": [
       ],
-      "delete": [
+      "deleteList": [
         {"column": "unit_id"},
         {"column": "keyword"}
       ]

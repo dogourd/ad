@@ -62,3 +62,6 @@ adconf:
     password: lyp82nlf
     binlogName:
     position: -1
+
+  kafka:
+    topic: ad-search-mysql-data
