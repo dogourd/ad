@@ -1,10 +1,17 @@
 package top.ezttf.ad.index.creativeunit;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import top.ezttf.ad.index.IIndexAware;
+import top.ezttf.ad.index.adunit.AdUnitObject;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 创意与推广单元关联索引实现
@@ -29,7 +36,7 @@ public class CreativeUnitIndex implements IIndexAware<String, CreativeUnitObject
      * key: adId; value: unitIdSet
      * redisKey : key: prefix + adId; value: unitIdSet
      */
-    private static final String AD_Creative_UNIT_INDEX_PREFIX = "ad_creative_unit_index_prefix_";
+    private static final String AD_CREATIVE_UNIT_INDEX_PREFIX = "ad_creative_unit_index_prefix_";
     /**
      * 推广单元 id --> 创意id Set
      * key: unitId; value: adIdSet
@@ -46,11 +53,27 @@ public class CreativeUnitIndex implements IIndexAware<String, CreativeUnitObject
         return (CreativeUnitObject) redisTemplate.opsForValue().get(AD_UNIT_CREATIVE_INDEX_PREFIX + key);
     }
 
+
+    public List<Long> selectAds(List<AdUnitObject> unitObjects) {
+        if (CollectionUtils.isEmpty(unitObjects)) {
+            return Collections.emptyList();
+        }
+        List<Long> creativeIds = Lists.newArrayList();
+        unitObjects.forEach(unitObject -> {
+            Set creativeIdSet = redisTemplate.opsForSet()
+                    .members(AD_UNIT_CREATIVE_INDEX_PREFIX + unitObject.getUnitId());
+            if (CollectionUtils.isNotEmpty(creativeIdSet)) {
+                creativeIds.addAll(creativeIdSet);
+            }
+        });
+        return creativeIds;
+    }
+
     @Override
     public void add(String key, CreativeUnitObject value) {
         log.info("CreativeUnitIndex, before add the key set is {}", redisTemplate.keys(AD_UNIT_CREATIVE_INDEX_PREFIX + "*"));
         redisTemplate.opsForValue().set(AD_UNIT_CREATIVE_INDEX_PREFIX + key, value);
-        redisTemplate.opsForSet().add(AD_Creative_UNIT_INDEX_PREFIX + value.getAdId(), value.getUnitId());
+        redisTemplate.opsForSet().add(AD_CREATIVE_UNIT_INDEX_PREFIX + value.getAdId(), value.getUnitId());
         redisTemplate.opsForSet().add(UNIT_AD_INDEX_PREFIX + value.getUnitId(), value.getAdId());
         log.info("CreativeUnitIndex, after add the key set is {}", redisTemplate.keys(AD_UNIT_CREATIVE_INDEX_PREFIX + "*"));
 
@@ -65,7 +88,7 @@ public class CreativeUnitIndex implements IIndexAware<String, CreativeUnitObject
     public void delete(String key, CreativeUnitObject value) {
         log.info("CreativeUnitIndex, before delete the key set is {}", redisTemplate.keys(AD_UNIT_CREATIVE_INDEX_PREFIX + "*"));
         redisTemplate.delete(AD_UNIT_CREATIVE_INDEX_PREFIX + key);
-        redisTemplate.opsForSet().remove(AD_Creative_UNIT_INDEX_PREFIX + value.getAdId(), value.getUnitId());
+        redisTemplate.opsForSet().remove(AD_CREATIVE_UNIT_INDEX_PREFIX + value.getAdId(), value.getUnitId());
         redisTemplate.opsForSet().remove(UNIT_AD_INDEX_PREFIX + value.getUnitId(), value.getAdId());
         log.info("CreativeUnitIndex, after delete the key set is {}", redisTemplate.keys(AD_UNIT_CREATIVE_INDEX_PREFIX + "*"));
     }

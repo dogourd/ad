@@ -1,10 +1,16 @@
 package top.ezttf.ad.index.creative;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import top.ezttf.ad.index.IIndexAware;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 创意索引实现
@@ -34,6 +40,21 @@ public class CreativeIndex implements IIndexAware<Long, CreativeObject> {
         return (CreativeObject) redisTemplate.opsForValue().get(AD_CREATIVE_INDEX_PREFIX + key);
     }
 
+    public List<CreativeObject> fetch(Collection<Long> creativeIds) {
+        if (CollectionUtils.isEmpty(creativeIds)) {
+            return Collections.emptyList();
+        }
+        List<CreativeObject> objectList = Lists.newArrayList();
+        creativeIds.forEach(creativeId -> {
+            CreativeObject object = (CreativeObject) redisTemplate.opsForValue().get(AD_CREATIVE_INDEX_PREFIX + creativeId);
+            if (object == null) {
+                log.error("CreativeObject not found: {}", creativeId);
+                return;
+            }
+            objectList.add(object);
+        });
+        return objectList;
+    }
     @Override
     public void add(Long key, CreativeObject value) {
         log.info("CreativeIndex, before add the key set is {}", redisTemplate.keys(AD_CREATIVE_INDEX_PREFIX + "*"));

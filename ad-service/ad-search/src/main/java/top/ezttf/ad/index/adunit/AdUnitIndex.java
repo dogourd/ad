@@ -1,12 +1,19 @@
 package top.ezttf.ad.index.adunit;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import top.ezttf.ad.index.IIndexAware;
+import top.ezttf.ad.util.RedisUtils;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -37,9 +44,37 @@ public class AdUnitIndex implements IIndexAware<Long, AdUnitObject> {
         return (AdUnitObject) redisTemplate.opsForValue().get(redisKey);
     }
 
+    /**
+     * 匹配某一流量类型的 广告单元, 返回单元id 集合
+     * @param positionType
+     * @return
+     */
     public Set<Long> match(int positionType) {
         Set<Long> adUnitIds = Sets.newHashSet();
-        return null;
+        Set<String> matchKeySet = RedisUtils.scan(redisTemplate, AD_UNIT_INDEX_PREFIX + "*", -1);
+        matchKeySet.forEach(redisKey -> {
+            if (AdUnitObject.isAdSlotTypeOk(positionType,
+                    ((AdUnitObject) redisTemplate.opsForValue().get(redisKey)).getPositionType())) {
+                adUnitIds.add(Long.valueOf(StringUtils.remove(redisKey, AD_UNIT_INDEX_PREFIX)));
+            }
+        });
+        return adUnitIds;
+    }
+
+    public List<AdUnitObject> fetch(Collection<Long> adUnitIds) {
+        if (CollectionUtils.isEmpty(adUnitIds)) {
+            return Collections.emptyList();
+        }
+        List<AdUnitObject> unitObjects = Lists.newArrayList();
+        adUnitIds.forEach(unitId -> {
+            AdUnitObject unitObject = get(unitId);
+            if (unitObject == null) {
+                log.error("adUnitObject not found: {}", unitId);
+                return;
+            }
+            unitObjects.add(unitObject);
+        });
+        return unitObjects;
     }
 
     @Override

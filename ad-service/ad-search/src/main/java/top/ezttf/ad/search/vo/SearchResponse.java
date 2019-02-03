@@ -59,16 +59,16 @@ public class SearchResponse {
         private List<String> clickMonitorUrl = Lists.newArrayList("www.baidu.com", "www.google.com");
 
 
-        public static Creative convert(CreativeObject creativeObject) {
-            Creative creative = new Creative();
-            creative.setAdId(creativeObject.getAdId());
-            creative.setAdUrl(creativeObject.getAdUrl());
-            creative.setHeight(creativeObject.getHeight());
-            creative.setWidth(creativeObject.getWidth());
-            creative.setType(creativeObject.getType());
-            creative.setMaterialType(creativeObject.getMaterialType());
+    }
+    public static Creative convert(CreativeObject creativeObject) {
+        Creative creative = new Creative();
+        creative.setAdId(creativeObject.getAdId());
+        creative.setAdUrl(creativeObject.getAdUrl());
+        creative.setHeight(creativeObject.getHeight());
+        creative.setWidth(creativeObject.getWidth());
+        creative.setType(creativeObject.getType());
+        creative.setMaterialType(creativeObject.getMaterialType());
 
-            return creative;
-        }
+        return creative;
     }
 }

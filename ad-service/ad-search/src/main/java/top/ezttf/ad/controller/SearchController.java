@@ -11,6 +11,9 @@ import top.ezttf.ad.annotation.IgnoreResponseAdvice;
 import top.ezttf.ad.client.ISponsorClient;
 import top.ezttf.ad.client.vo.AdPlan;
 import top.ezttf.ad.client.vo.AdPlanGetRequest;
+import top.ezttf.ad.search.ISearch;
+import top.ezttf.ad.search.vo.SearchRequest;
+import top.ezttf.ad.search.vo.SearchResponse;
 import top.ezttf.ad.vo.CommonResponse;
 
 import java.util.List;
@@ -23,13 +26,16 @@ import java.util.List;
 @RestController
 public class SearchController {
 
+    private final ISearch iSearch;
+
     private final RestTemplate restTemplate;
 
     private final ISponsorClient iSponsorClient;
     @Autowired
-    public SearchController(RestTemplate restTemplate, ISponsorClient iSponsorClient) {
+    public SearchController(RestTemplate restTemplate, ISponsorClient iSponsorClient, ISearch iSearch) {
         this.restTemplate = restTemplate;
         this.iSponsorClient = iSponsorClient;
+        this.iSearch = iSearch;
     }
 
 
@@ -58,5 +64,11 @@ public class SearchController {
                 request,
                 CommonResponse.class
         ).getBody();
+    }
+
+    @PostMapping("/fetchAds")
+    public SearchResponse fetchAds(@RequestBody SearchRequest request) {
+        log.info("ad-search: fetchAds -> {}", JSON.toJSONString(request));
+        return iSearch.fetchAds(request);
     }
 }

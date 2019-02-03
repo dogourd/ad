@@ -146,11 +146,8 @@ public class TestRedisTemplate {
 
     @Test
     public void testScan() {
-        Cursor<?> cursor = RedisUtils.scan(redisTemplate, "*", -1);
-        while (cursor.hasNext()) {
-            Object next = cursor.next();
-            log.debug("result is {}", next);
-        }
+        Set<String> set = RedisUtils.scan(redisTemplate, "*", -1);
+        set.forEach(log::debug);
     }
 
 

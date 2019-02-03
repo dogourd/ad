@@ -1,9 +1,13 @@
 package top.ezttf.ad.util;
 
+import com.google.common.collect.Sets;
 import org.springframework.data.redis.core.ConvertingCursor;
-import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * @author yuwen
@@ -11,18 +15,23 @@ import org.springframework.data.redis.core.ScanOptions;
  */
 public class RedisUtils {
 
-    public static Cursor<?> scan(RedisTemplate<String, ?> redisTemplate, String pattern, int count) {
+    public static Set<String> scan(RedisTemplate<String, ?> redisTemplate, String pattern, int count) {
         ScanOptions scanOptions;
         if (count > -1) {
             scanOptions = ScanOptions.scanOptions().match(pattern).count(count).build();
         } else {
             scanOptions = ScanOptions.scanOptions().match(pattern).build();
         }
-
-        return  redisTemplate.executeWithStickyConnection((redisConnection) ->
+        ConvertingCursor<byte[], String> cursor = redisTemplate.executeWithStickyConnection((redisConnection) ->
                 new ConvertingCursor<>(redisConnection.scan(scanOptions),
-                redisTemplate.getKeySerializer()::deserialize)
+                        new StringRedisSerializer()::deserialize)
         );
+        if (cursor != null) {
+            Set<String> set = Sets.newHashSet();
+            cursor.forEachRemaining(set::add);
+            return set;
+        }
+        return Collections.emptySet();
     }
 
 }
