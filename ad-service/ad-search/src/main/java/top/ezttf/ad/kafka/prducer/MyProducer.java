@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
+import top.ezttf.ad.kafka.partitioner.CustomPartitioner;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
@@ -26,10 +27,13 @@ public class MyProducer {
         properties.setProperty("key.serializer", "org.apache.kafka.common.serializer.StringSerializer");
         // value同上
         properties.setProperty("value.serializer", "org.apache.kafka.common.serializer.StringSerializer");
+
+        properties.setProperty("partitioner.class", CustomPartitioner.class.getName());
+
         producer = new KafkaProducer<>(properties);
     }
 
-    // 最快
+    /** 最快*/
     private static void sendMessageForgetResult() {
         ProducerRecord<String, String> record = new ProducerRecord<>(
                 "kafka-topic",
@@ -40,7 +44,7 @@ public class MyProducer {
         producer.close();
     }
 
-    // 最慢
+    /** 最慢 */
     private static void sendMessageSync() throws ExecutionException, InterruptedException {
         ProducerRecord<String, String> record = new ProducerRecord<>(
                 "kafka-topic",
@@ -56,7 +60,7 @@ public class MyProducer {
         producer.close();
     }
 
-    // 适中
+    /** 适中*/
     private static void sendMessageAsync() {
         ProducerRecord<String, String> record = new ProducerRecord<>(
                 "kafka-topic",
