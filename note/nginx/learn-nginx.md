@@ -67,9 +67,8 @@ http{
     - 内置变量: [Nginx内置](https://nginx.org/en/docs/http/ngx_http_core_module.html#var_status)
     - 自定义变量: 自定义(此处不作介绍, 后面Nginx + Lua 进行说明)   
 - Nginx模块
-    - Nginx官方模块  
-    
-        0. sub_status模块  
+    - Nginx官方模块    
+        1. sub_status模块  
         <table>
             <tr>
                 <td>编译选项</td>
@@ -86,7 +85,7 @@ http{
         默认: -
         上下文: server, location
         ```
-        1. random index
+        2. random index
         <table>
             <tr>
                 <td>编译选项</td>
@@ -103,7 +102,7 @@ http{
          默认: random_index off;
          上下文: location
         ```
-        1. sub模块
+        2. sub模块
         <table>
             <tr>
                 <td>编译选项</td>
