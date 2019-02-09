@@ -18,17 +18,15 @@
     </tr>
 </table>
 <table>
-    <td>events</td>
-    <td>
-        <tr>
-            <td>worker_connections</td>
-            <td>每个进程允许最大连接数</td>
-        </tr>
-        <tr>
-            <td>use</td>
-            <td>工作进程数</td>
-        </tr>
-    </td>
+    <tr>
+        <td rowspan="2">events</td>
+        <td>worker_connections</td>
+        <td>每个进程允许最大连接数</td>
+    </tr>
+    <tr>
+        <td>use</td>
+        <td>工作进程数</td>
+    </tr>
 </table>
 
 - http模块中的配置语法  
