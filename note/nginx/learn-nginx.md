@@ -21,7 +21,6 @@
     <tr>
         <td>events</td>
         <td>
-            <table>
                 <tr>
                     <td>worker_connections</td>
                     <td>每个进程允许最大连接数</td>
@@ -30,7 +29,6 @@
                     <td>use</td>
                     <td>工作进程数</td>
                 </tr>
-            </table>
         </td>
     </tr>
 </table>
