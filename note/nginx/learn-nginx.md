@@ -21,14 +21,16 @@
     <tr>
         <td>events</td>
         <td>
-            <tr>
-                <td>worker_connections</td>
-                <td>每个进程允许最大连接数</td>
-            </tr>
-            <tr>
-                <td>use</td>
-                <td>工作进程数</td>
-            </tr>
+            <table>
+                <tr>
+                    <td>worker_connections</td>
+                    <td>每个进程允许最大连接数</td>
+                </tr>
+                <tr>
+                    <td>use</td>
+                    <td>工作进程数</td>
+                </tr>
+            </table>
         </td>
     </tr>
 </table>
