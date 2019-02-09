@@ -102,7 +102,7 @@ http{
          默认: random_index off;
          上下文: location
         ```
-        2. sub模块
+        3. sub模块
         <table>
             <tr>
                 <td>编译选项</td>
@@ -131,3 +131,20 @@ http{
         上下文: http, server, location
         ```
     - 第三方模块
+
+- Nginx请求限制
+    - 连接频率限制: **limit_conn_module**    
+    - 请求频率限制: **limit_req_module**
+    
+    ```
+    连接限制(预对连接进行限制则必要对其进行存储)
+    开辟空间存储
+    语法: limit_conn_zone key zone=name:size;
+    默认: -
+    上下文: http
+    
+    此处zone为上面声明的zone的name
+    语法: limit_conn zone number;
+    默认: -
+    上下文: http, server, location
+    ```
