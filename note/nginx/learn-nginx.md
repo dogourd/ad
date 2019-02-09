@@ -68,4 +68,66 @@ http{
     - 自定义变量: 自定义(此处不作介绍, 后面Nginx + Lua 进行说明)   
 - Nginx模块
     - Nginx官方模块
+        0. sub_status模块  
+        <table>
+            <tr>
+                <td>编译选项</td>
+                <td>作用</td>
+            </tr>
+            <tr>
+                <td>--with-http_sub_status_module</td>
+                <td>Nginx当前处理连接的状态</td>
+            </tr>
+        </table>
+         
+        ```
+        语法: stub_status;
+        默认: -
+        上下文: server, location
+        ```
+        1. random index
+        <table>
+            <tr>
+                <td>编译选项</td>
+                <td>作用</td>
+            </tr>
+            <tr>
+                <td>--with-http_random_index_module</td>
+                <td>在目录中选择一个随机主页</td>
+            </tr>
+        </table>
+        
+        ```
+         语法: random_index on | off;
+         默认: random_index off;
+         上下文: location
+        ```
+        1. sub模块
+        <table>
+            <tr>
+                <td>编译选项</td>
+                <td>作用</td>
+            </tr>
+            <tr>
+                <td>--with-http_sub_module</td>
+                <td>HTTP内容替换</td>
+            </tr>
+        </table>
+        
+        ```
+        用作响应内容替换
+        语法: sub_filter string replacement;
+        默认: -
+        上下文: http, server, location
+        
+        用作缓存
+        语法: sub_filter_last_modified on | off;
+        默认: sub_filter_last_modified off;
+        上下文: http, server, location
+        
+        在响应内容替换时决定只匹配第一个还是全局替换
+        语法: sub_filter_once on | off;
+        默认: sub_filter once on;
+        上下文: http, server, location
+        ```
     - 第三方模块
