@@ -32,7 +32,8 @@
         </table>
     </tr>
 </table>
-http模块中的配置语法
+http模块中的配置语法  
+
 ```
 http{
     ...
