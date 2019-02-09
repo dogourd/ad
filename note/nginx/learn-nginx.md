@@ -19,7 +19,7 @@
 </table>
 <table>
     <tr>
-        <td colspan="2">events</td>
+        <td>events</td>
         <td>
             <tr>
                 <td>worker_connections</td>
