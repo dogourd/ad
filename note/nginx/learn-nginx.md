@@ -137,7 +137,8 @@ http{
     - 请求频率限制: **limit_req_module**
     
     ```
-    **连接限制**(预对连接进行限制则必要对其进行存储)
+    连接限制(预对连接进行限制则必要对其进行存储)
+    
     开辟空间存储
     语法: limit_conn_zone key zone=name:size;
     默认: -
@@ -147,6 +148,49 @@ http{
     语法: limit_conn zone number;
     默认: -
     上下文: http, server, location
+    
+    请求限制
+    
+    语法: limit_req_zone key zone=name:size rate=rate;
+    默认: -
+    上下文: http
+    
+    语法: limit_req zone=name [burst=number] [nodelay];
+    默认: -
+    上下文: http, server, location
     ```
     
+    例子(转载自[简书](https://www.jianshu.com/p/2cf3d9609af3)):  
+    > 
+       limit_req_zone $binary_remote_addr zone=mylimit:10m rate=10r/s;  
+       server {  
+           location /login/ {  
+               limit_req zone=mylimit;  
+               proxy_pass http://my_upstream;  
+           }  
+       }
+    当limit_req 在它出现的环境中启用了限流（在上面的例子中，作用在所有对于/login/的请求上），则limit_req_zone指令定义了限流的参数。
+    limit_req_zone指令一般定义在http块内部，使得该指令可以在多个环境中使用。该指令有下面三个参数：
+      
+- **Key** — 在限流应用之前定义了请求的特征。在上面例子中，它是$binary_remote_addr（NGINX变量），该变量代表了某个客户端IP地址的
+二进制形式。这意味着我们可以将每个特定的IP地址的请求速率限制为第三个参数所定义的值。（使用这个变量的原因是因为它比用string代表客户端
+IP地址的$remote_addr变量消耗更少的空间。）
+
+- **Zone** — 定义了存储每个IP地址状态和它访问受限请求URL的频率的共享内存区域。将这些信息保存在共享内存中，意味着这些信息能够在NGINX
+工作进程之间共享。定义有两个部分：由zone=关键字标识的区域名称，以及冒号后面的区域大小。约16000个IP地址的状态信息消耗1M内存大小，
+因此我们的区域（zone）大概可以存储约160000个地址。当NGINX需要添加新的记录时，如果此时存储耗尽了，最老的记录会被移除。如果释放的
+存储空间还是无法容纳新的记录，NGINX返回 **503 (Service Temporarily Unavailable)** 状态码。此外，为了防止内存被耗尽，每次NGINX创建
+一个新的记录的同时移除多达两条前60秒内没有被使用的记录。
+
+- **Rate** — 设置最大的请求速率。在上面的例子中，速率不能超过10个请求每秒。NGINX事实上可以在毫秒级别追踪请求，因此这个限制对应了1个
+请求每100毫秒。因为我们不允许突刺（bursts，短时间内的突发流量，详细见下一部分。），这意味着如果某个请求到达的时间离前一个被允许的
+请求小于100毫秒，它会被拒绝。  
+
+
+>  limit_req_zone指令设置限流和共享内存区域的参数，但是该指令实际上并不限制请求速率。为了限制起作用，需要将该限制应用到某个特定的location
+或server块（block），通过包含一个limit_req指令的方式。在上面的例子中，我们将请求限制在/login/上。  
+
+> 所以现在对于/login/，每个特定的IP
+地址被限制为10个请求每秒— 或者更准确地说，不能在与前一个请求间隔100毫秒时间内发送请求。
+
     
