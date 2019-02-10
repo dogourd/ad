@@ -137,7 +137,7 @@ http{
     - 请求频率限制: **limit_req_module**
     
     ```
-    连接限制(预对连接进行限制则必要对其进行存储)
+    **连接限制**(预对连接进行限制则必要对其进行存储)
     开辟空间存储
     语法: limit_conn_zone key zone=name:size;
     默认: -
@@ -148,3 +148,5 @@ http{
     默认: -
     上下文: http, server, location
     ```
+    
+    
