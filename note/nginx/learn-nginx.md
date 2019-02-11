@@ -204,14 +204,18 @@ http{
     ```
     http_access_module的局限性: 对于我们ban掉的ip, 如果其通过代理来访问则无法对其进行限制。
     如配置  
+    ```
     deny **192.168.1.4**;  
-    allow all;  
+    allow all;
+    ```  
     则可以ban掉 **192.168.1.4**这个IP地址, 但若其通过代理来访问设为 *192.168.1.5*则其又可以访问服务器资源。
     因为http_access_module是通过**remote_addr**来限制的。  
+      
     若: 客户端: IP1,   客户端代理: IP2,   Nginx: IP3。   
     那么当Nginx将IP1限制后客户端又通过代理IP2来访问则无法对其进行限制。
     因为无法获得原始客户端的ip地址。
     我们可以通过使用**http_x_forwarded_for**来进行限制, 此时若依然保持  
+        
     客户端: IP1,   代理: IP2,  Nginx: IP3  
     那么最终会得到: x_forward_for = IP1, IP2即第一个值为原始客户端地址。这是解决http_access_module局限性的方案之一。  
     解决方式共有三种:
