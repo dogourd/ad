@@ -154,10 +154,6 @@ location ~ .*\.(htm|html)$ {
 ```
 以上配置限制只有当请求头不携带"Referer"字段。或者请求头携带"Referer"字段但是其值已被防火墙或者代理服务器删除。是一些不携带"http://"或者"https://"的值, 或者referer为127.0.0.1时才可以访问服务器资源。除此之外都会返回403的HTTP状态码。具体可以参考[官方文档](http://nginx.org/en/docs/http/ngx_http_referer_module.html)。
 
-```
-graph LR
-A-->B
-```
 
 
 
