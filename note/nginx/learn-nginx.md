@@ -218,10 +218,47 @@ http{
         我们可以通过使用**http_x_forwarded_for**来进行限制, 此时若依然保持  
         
         客户端: IP1,   代理: IP2,  Nginx: IP3  
-        那么最终会得到: x_forward_for = IP1, IP2即第一个值为原始客户端地址。这是解决http_access_module局限性的方案之一。  
+        那么最终会得到: x_forward_for = IP1, IP2即第一个值为原始客户端地址。这是解决http_access_module局限性的方案之一。 
+        但是需要明白 x_forward_for只是一个协议要求并非所有的厂商都会按照要求对其进行实现。甚至可能被修改因为它只是一个头信息
+        可以被客户端修改。 
         解决方式共有三种:  
             + 不采用remote_addr头, 而是采用其他HTTP头信息如: HTTP_X_FORWARD_FOR  
             + 结合Nginx geo模块使用  
             + 通过HTTP自定义变量进行传递  
-    - 基于用户的信任登录: http_auth_basic_module
+    - 基于用户的信任登录: http_auth_basic_module  
+    
+        ```
+        语法: auth_basic string | off;  
+        默认: auth_basic off;  
+        上下文: http, server, location, limit_except
+        
+        语法: auth_basic_user_file file;
+        默认: -
+        上下文: http, server, location, limit_except
+        ```
+        
+        可以通过配合 htpasswd命令进行使用, CentOS可以通过
+        ==yum -y install httpd-tools==进行安装
+        进入到/etc/nginx/目录下(可自定义, 在配置文件中填写
+        正确路径即可)使用==htpasswd -c auth_conf $USERNAME==
+        回车填写密码即可。
+        [官方教程](http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html)
+        然后可以在配置文件中进行如下配置:  
+        
+        ```
+        location ~ ^/admin.html {
+            root /developer/html;
+            auth_basic "Auth test, input your passwd~";
+            auth_basic_user_file /etc/nginx/auth_conf;
+            index index.html index.htm;
+        }
+        ```
+        
+        http_auth_basic_module的局限性:
+        1. 用户信息依赖文件方式
+        2. 操作管理比较机械, 效率低下  
+        
+        解决方案:  
+        1. Nginx结合Lua高效验证  
+        2. Nginx和LDAP打通, 利用nginx-auth-ldap模块
     
