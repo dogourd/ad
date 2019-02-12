@@ -238,9 +238,9 @@ http{
         ```
         
         可以通过配合 htpasswd命令进行使用, CentOS可以通过
-        ==yum -y install httpd-tools==进行安装
+        `yum -y install httpd-tools`进行安装
         进入到/etc/nginx/目录下(可自定义, 在配置文件中填写
-        正确路径即可)使用==htpasswd -c auth_conf $USERNAME==
+        正确路径即可)使用`htpasswd -c auth_conf $USERNAME`
         回车填写密码即可。
         [官方教程](http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html)
         然后可以在配置文件中进行如下配置:  
