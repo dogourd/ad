@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ad-gateway
+    name: eureka-client-ad-gateway
 
 server:
   port: 9000
