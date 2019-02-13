@@ -15,6 +15,7 @@
         <module>ad-sponsor</module>
         <module>ad-search</module>
         <module>ad-dump</module>
+        <module>ad-dashboard</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -2,6 +2,7 @@ package top.ezttf.ad.search.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
@@ -34,8 +35,13 @@ import java.util.*;
 @Service
 public class SearchImpl implements ISearch {
 
+    public SearchResponse fallback(SearchRequest request, Throwable throwable) {
+        return null;
+    }
+
 
     @Override
+    @HystrixCommand(fallbackMethod = "fallback")
     public SearchResponse fetchAds(SearchRequest request) {
         // 请求的广告位信息
         List<AdSlot> adSlots = request.getRequestInfo().getAdSlots();

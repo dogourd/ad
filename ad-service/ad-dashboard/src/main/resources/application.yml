@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-client-ad-dashboard
+
+server:
+  port: 7002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://local.eureka.server:8000/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
