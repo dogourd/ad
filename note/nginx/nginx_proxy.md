@@ -17,13 +17,13 @@ RTMP|Media Server
 客户端<----->**Nginx<----->服务端**  
 正向代理和反向代理的区别就在于代理的对象不一样
 正向代理的代理对象是客户端, 而反向代理的对象是服务端  
-反向代理或正向代理的配置
+**反向代理或正向代理的配置**
 ```
 语法: proxy_pass URL;
 默认: -
 上下文: location, if in location, limit_except
 ```
-缓冲区的配置
+**缓冲区的配置**
 ```
 语法: proxy_buffering on | off;
 默认: proxy_buffering on;
@@ -31,7 +31,7 @@ RTMP|Media Server
 ```
 扩展: proxy_buffer_size、proxy_buffers、proxy_busy_buffers_size
 更多信息可以参阅[官方文档](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)。  
-跳转重定向的配置
+**跳转重定向的配置**
 ```
 语法: proxy_redirect default;
       proxy_redirect off;
@@ -40,7 +40,7 @@ RTMP|Media Server
 上下文: http, server, location
 ```
 
-头信息的配置
+**头信息的配置**
 ```
 语法: proxy_set_header field value;
 默认: proxy_set_header HOST $proxy_host;
@@ -49,7 +49,7 @@ RTMP|Media Server
 ```
 扩展: proxy_hide_header、 proxy_set_body
 
-超时配置(Nginx作为代理连接到后端服务器的超时时间)
+**超时配置**(Nginx作为代理连接到后端服务器的超时时间)
 ```
 语法: proxy_connect_timeout time;
 默认: proxy_connect_timeout 60s;
@@ -61,7 +61,7 @@ RTMP|Media Server
 - proxy_send_timeout  
 服务端请求处理完毕后, Nginx将响应发送给客户端的超时时间。
 
-配置示例
+**配置示例**
 ```
 location / {
     # 代理
