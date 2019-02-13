@@ -75,7 +75,8 @@ public class UnitKeywordIndex implements IIndexAware<String, Set<Long>> {
      */
     @Override
     public void add(String key, Set<Long> value) {
-        String keywordUnitRedisKey = KEYWORD_UNIT_INDEX_PREFIX + key;  // key: keyword; value: unitIdSet
+        // key: keyword; value: unitIdSet
+        String keywordUnitRedisKey = KEYWORD_UNIT_INDEX_PREFIX + key;
         log.info("UnitKeywordIndex, before add the key set is {}", redisTemplate.keys(UNIT_KEYWORD_INDEX_PREFIX + "*"));
         // key: prefix + keyword; value: Set<Long> unitIdSet
         redisTemplate.opsForSet().add(keywordUnitRedisKey, value.toArray());
