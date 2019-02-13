@@ -25,6 +25,7 @@ public class WebConfiguration implements WebMvcConfigurer {
         objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         objectMapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
-        converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
+        MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter(objectMapper);
+        converters.add(messageConverter);
     }
 }

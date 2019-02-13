@@ -69,7 +69,7 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
         if (body == null) {
             return response;
         } else if (body instanceof CommonResponse) {
-            return body;
+            commonResponse = (CommonResponse) body;
         } else {
             commonResponse.setData(body);
         }
