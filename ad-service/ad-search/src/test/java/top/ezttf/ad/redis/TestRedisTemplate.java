@@ -1,5 +1,6 @@
 package top.ezttf.ad.redis;
 
+import com.google.common.collect.Lists;
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
@@ -16,11 +17,14 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.ezttf.ad.index.DataTable;
 import top.ezttf.ad.index.adplan.AdPlanObject;
+import top.ezttf.ad.index.district.UnitDistrictIndex;
 import top.ezttf.ad.index.keyword.UnitKeywordIndex;
+import top.ezttf.ad.search.vo.feature.DistrictFeature;
 import top.ezttf.ad.util.RedisUtils;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -39,7 +43,11 @@ public class TestRedisTemplate {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    @Autowired
+    private UnitKeywordIndex keywordIndex;
 
+    @Autowired
+    private UnitDistrictIndex districtIndex;
     @Test
     public void nativeAPI() {
         RedisClient redisClient = RedisClient.create("redis://127.0.0.1:6379/0");
@@ -150,5 +158,15 @@ public class TestRedisTemplate {
         set.forEach(log::debug);
     }
 
+
+    @Test
+    public void testCast() {
+        Set<Long> longSet = keywordIndex.get("奥迪");
+        longSet.forEach(element -> log.debug(element.getClass().getName()));
+
+        List<DistrictFeature.ProvinceAndCity> directs = Lists.newArrayList();
+        directs.add(new DistrictFeature.ProvinceAndCity("安徽省", "合肥市"));
+        log.debug("{}", districtIndex.match(10L, directs));
+    }
 
 }

@@ -1,5 +1,6 @@
 package top.ezttf.ad.index.keyword;
 
+import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -56,6 +57,7 @@ public class UnitKeywordIndex implements IIndexAware<String, Set<Long>> {
     @Override
     @SuppressWarnings("unchecked")
     public Set<Long> get(String key) {
+        Set<Long> unitIdSetResult = Sets.newHashSet();
         if (StringUtils.isBlank(key)) {
             return Collections.emptySet();
         }
@@ -64,7 +66,8 @@ public class UnitKeywordIndex implements IIndexAware<String, Set<Long>> {
         if (unitIdSet == null) {
             return Collections.emptySet();
         }
-        return unitIdSet;
+        unitIdSet.forEach(unitId -> unitIdSetResult.add(Long.valueOf(unitId.toString())));
+        return unitIdSetResult;
     }
 
     /**
