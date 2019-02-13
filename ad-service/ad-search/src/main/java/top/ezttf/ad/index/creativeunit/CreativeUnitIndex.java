@@ -53,7 +53,7 @@ public class CreativeUnitIndex implements IIndexAware<String, CreativeUnitObject
         return (CreativeUnitObject) redisTemplate.opsForValue().get(AD_UNIT_CREATIVE_INDEX_PREFIX + key);
     }
 
-
+    @SuppressWarnings("all")
     public List<Long> selectAds(List<AdUnitObject> unitObjects) {
         if (CollectionUtils.isEmpty(unitObjects)) {
             return Collections.emptyList();
@@ -61,9 +61,9 @@ public class CreativeUnitIndex implements IIndexAware<String, CreativeUnitObject
         List<Long> creativeIds = Lists.newArrayList();
         unitObjects.forEach(unitObject -> {
             Set creativeIdSet = redisTemplate.opsForSet()
-                    .members(AD_UNIT_CREATIVE_INDEX_PREFIX + unitObject.getUnitId());
+                    .members(UNIT_AD_INDEX_PREFIX + unitObject.getUnitId());
             if (CollectionUtils.isNotEmpty(creativeIdSet)) {
-                creativeIds.addAll(creativeIdSet);
+                creativeIdSet.forEach(creativeId -> creativeIds.add(Long.valueOf(creativeId.toString())));
             }
         });
         return creativeIds;
