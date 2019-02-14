@@ -22,7 +22,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://local.eureka.server:8000/eureka
+      defaultZone: http://local.eureka.server:8000/eureka/
 
 feign:
   hystrix:

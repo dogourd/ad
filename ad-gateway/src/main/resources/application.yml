@@ -9,14 +9,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://local.eureka.server:8000/eureka/
-
 zuul:
-  prefix: /zuul
+  prefix: /my-zuul
   routes:
     sponsor:
-      path: /ad-sponsor/**        # **为通配符(任意字符,支持多级目录), ?(任意单个字符), *(任意字符,支持一级目录)
-      serviceId: eureka-client-ad-sponsor
-      strip-prefix: false         # 设置不跳过前缀
+      # **为通配符(任意字符,支持多级目录), ?(任意单个字符), *(任意字符,支持一级目录)
+      path: /ad-sponsor/**
+      service-id: eureka-client-ad-sponsor
+      # 设置不跳过前缀
+      strip-prefix: false
     search:
       path: /ad-search/**
       serviceId: eureka-client-ad-search
@@ -24,3 +25,4 @@ zuul:
 logging:
   level:
     top.ezttf.ad: debug
+debug: true

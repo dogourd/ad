@@ -2,7 +2,6 @@ package top.ezttf.ad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -14,7 +13,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author yuwen
  * @date 2019/1/24
  */
-@EnableCaching
 @EnableFeignClients                             // 使用feign去访问其他的微服务
 @EnableEurekaClient                             // 作为eureka client注册到 eureka 注册中心
 @EnableHystrix                                  // 使用断路器
@@ -25,7 +23,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class SearchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringApplication.class, args);
+        SpringApplication.run(SearchApplication.class, args);
     }
 
     //@Bean

@@ -1,7 +1,7 @@
 server:
   port: 7001
   servlet:
-    context-path: /ad-serach
+    context-path: /ad-search
 spring:
   application:
     name: eureka-client-ad-search
@@ -66,3 +66,5 @@ adconf:
 
   kafka:
     topic: ad-search-mysql-data
+
+debug: true
