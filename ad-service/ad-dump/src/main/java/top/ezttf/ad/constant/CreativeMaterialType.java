@@ -10,7 +10,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public enum creativeMaterialType {
+public enum CreativeMaterialType {
 
     /**
      * 物料类型

@@ -74,7 +74,7 @@ public class AdLevelDataHandler {
         AdPlanObject planObject = DataTable.of(AdPlanIndex.class)
                 .get(unitTable.getPlanId());
         if (planObject == null) {
-            log.error("error! handleLevel3 found adPlanObject is not exist! {}", planObject.getPlanId());
+            log.error("error! handleLevel3 found adPlanObject is not exist! {}", unitTable.getPlanId());
             return;
         }
         AdUnitObject unitObject = new AdUnitObject(

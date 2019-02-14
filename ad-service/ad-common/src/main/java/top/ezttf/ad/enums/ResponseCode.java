@@ -1,5 +1,6 @@
 package top.ezttf.ad.enums;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -8,7 +9,7 @@ import lombok.Getter;
  * @date 2019/1/19
  */
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public enum ResponseCode {
     /**
      * 正常相应处理

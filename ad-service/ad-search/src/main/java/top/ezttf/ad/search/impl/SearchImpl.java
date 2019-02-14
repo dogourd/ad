@@ -26,6 +26,7 @@ import top.ezttf.ad.search.vo.feature.KeywordFeature;
 import top.ezttf.ad.search.vo.media.AdSlot;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author yuwen
@@ -91,7 +92,7 @@ public class SearchImpl implements ISearch {
         // TODO 此处只是为了方便调试, 只返回一个可以扩展返回list
         // 随机地返回一个创意对象
         CreativeObject object = objects.get(
-            Math.abs(new Random().nextInt()) % objects.size()
+            Math.abs(ThreadLocalRandom.current().nextInt()) % objects.size()
         );
         return Collections.singletonList(SearchResponse.convert(object));
     }

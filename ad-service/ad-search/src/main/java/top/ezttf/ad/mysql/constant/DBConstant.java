@@ -1,5 +1,6 @@
 package top.ezttf.ad.mysql.constant;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,18 +74,19 @@ public class DBConstant {
         public static final String COLUMN_KEYWORD = "keyword";
     }
 
-    public static Map<String, String> table2Db;
+    public static final Map<String, String> TABLE_2_DB;
 
     static {
-        table2Db = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
 
-        table2Db.put(AD_PLAN_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_CREATIVE_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_CREATIVE_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_UNIT_DISTRICT_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_UNIT_IT_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
-        table2Db.put(AD_UNIT_KEYWORD_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_PLAN_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_CREATIVE_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_CREATIVE_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_UNIT_DISTRICT_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_UNIT_IT_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_UNIT_TABLE_INFO.TABLE_NAME, DB_NAME);
+        map.put(AD_UNIT_KEYWORD_TABLE_INFO.TABLE_NAME, DB_NAME);
+        TABLE_2_DB = Collections.unmodifiableMap(map);
 
     }
 }
