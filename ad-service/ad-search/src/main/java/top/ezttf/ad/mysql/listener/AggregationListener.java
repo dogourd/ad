@@ -154,7 +154,7 @@ public class AggregationListener implements BinaryLogClient.EventListener {
         }
         List<Map<String, String>> afterMapList = new ArrayList<>();
         for (Serializable[] afterValue : getAfterValues(eventData)) {
-            Map<String, String> afterMap = new HashMap<>();
+            Map<String, String> afterMap = new HashMap<>(afterValue.length);
             int length = afterValue.length;
             for (int i = 0; i < length; i++) {
                 String columnName = tableTemplate.getPositionMap().get(i);

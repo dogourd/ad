@@ -5,6 +5,8 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import top.ezttf.ad.mysql.listener.AggregationListener;
 
@@ -34,7 +36,7 @@ public class BinlogClient {
      * 该方法应该在应用程序启动时刻 就开始进行binlog 监听,
      * 可以使用springboot 提供的{@link org.springframework.boot.CommandLineRunner}
      * 或者{@link org.springframework.boot.ApplicationRunner}默认优先级更高一点
-     * {@link org.springframework.boot.SpringApplication.callRunners()}
+     * @see org.springframework.boot.SpringApplication#callRunners(ApplicationContext, ApplicationArguments)
      *
      * 此处实现了在 {@link top.ezttf.ad.runner.BinlogRunner} 中直接调用
      */
@@ -73,6 +75,7 @@ public class BinlogClient {
                 log.error("mysql binlog connect error");
             }
         });
+        executor.shutdown();
     }
 
     public void close() {

@@ -66,5 +66,3 @@ adconf:
 
   kafka:
     topic: ad-search-mysql-data
-
-debug: true

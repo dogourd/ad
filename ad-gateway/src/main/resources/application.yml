@@ -25,4 +25,3 @@ zuul:
 logging:
   level:
     top.ezttf.ad: debug
-debug: true
