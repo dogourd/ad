@@ -82,12 +82,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.15</version>
             <!--<scope>runtime</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>com.github.shyiko</groupId>
-            <artifactId>mysql-binlog-connector-java</artifactId>
-            <version>0.18.0</version>
         </dependency>
         <!--通用响应及异常处理-->
         <dependency>
