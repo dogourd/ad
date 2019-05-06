@@ -15,7 +15,7 @@ spring:
       connection-test-query: select 1
       pool-name: hikari-pool
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/ad_data?characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
   jpa:
     show-sql: true
     hibernate:

@@ -14,8 +14,8 @@ spring:
       maximum-pool-size: 4
       username: yuwen
       password: lyp82nlf
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ad_data?autoReconnect=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ad_data?autoReconnect=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
 
 
 
