@@ -20,8 +20,8 @@
         <result column="end_date" jdbcType="TIMESTAMP" property="endDate"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
-  </sql>
+        id, user_id, plan_name, plan_status, start_date, end_date, create_time, update_time
+    </sql>
 
     <sql id="Table_Column_List">
         id, user_id, plan_status, start_date, end_date
@@ -33,110 +33,110 @@
         where id = #{id,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ad_plan
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
+        delete from ad_plan
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
     <insert id="insert" parameterType="top.ezttf.ad.pojo.AdPlan">
-    insert into ad_plan (id, user_id, plan_name, 
-      plan_status, start_date, end_date, 
-      create_time, update_time)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{planName,jdbcType=VARCHAR}, 
-      #{planStatus,jdbcType=TINYINT}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into ad_plan (id, user_id, plan_name,
+        plan_status, start_date, end_date,
+        create_time, update_time)
+        values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{planName,jdbcType=VARCHAR},
+        #{planStatus,jdbcType=TINYINT}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="top.ezttf.ad.pojo.AdPlan">
         insert into ad_plan
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
-        id,
-      </if>
+                id,
+            </if>
             <if test="userId != null">
-        user_id,
-      </if>
+                user_id,
+            </if>
             <if test="planName != null">
-        plan_name,
-      </if>
+                plan_name,
+            </if>
             <if test="planStatus != null">
-        plan_status,
-      </if>
+                plan_status,
+            </if>
             <if test="startDate != null">
-        start_date,
-      </if>
+                start_date,
+            </if>
             <if test="endDate != null">
-        end_date,
-      </if>
+                end_date,
+            </if>
             <if test="createTime != null">
-        create_time,
-      </if>
+                create_time,
+            </if>
             <if test="updateTime != null">
-        update_time,
-      </if>
+                update_time,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
+                #{id,jdbcType=BIGINT},
+            </if>
             <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
-      </if>
+                #{userId,jdbcType=BIGINT},
+            </if>
             <if test="planName != null">
-        #{planName,jdbcType=VARCHAR},
-      </if>
+                #{planName,jdbcType=VARCHAR},
+            </if>
             <if test="planStatus != null">
-        #{planStatus,jdbcType=TINYINT},
-      </if>
+                #{planStatus,jdbcType=TINYINT},
+            </if>
             <if test="startDate != null">
-        #{startDate,jdbcType=TIMESTAMP},
-      </if>
+                #{startDate,jdbcType=TIMESTAMP},
+            </if>
             <if test="endDate != null">
-        #{endDate,jdbcType=TIMESTAMP},
-      </if>
+                #{endDate,jdbcType=TIMESTAMP},
+            </if>
             <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
             <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.AdPlan">
         update ad_plan
         <set>
             <if test="userId != null">
-        user_id = #{userId,jdbcType=BIGINT},
-      </if>
+                user_id = #{userId,jdbcType=BIGINT},
+            </if>
             <if test="planName != null">
-        plan_name = #{planName,jdbcType=VARCHAR},
-      </if>
+                plan_name = #{planName,jdbcType=VARCHAR},
+            </if>
             <if test="planStatus != null">
-        plan_status = #{planStatus,jdbcType=TINYINT},
-      </if>
+                plan_status = #{planStatus,jdbcType=TINYINT},
+            </if>
             <if test="startDate != null">
-        start_date = #{startDate,jdbcType=TIMESTAMP},
-      </if>
+                start_date = #{startDate,jdbcType=TIMESTAMP},
+            </if>
             <if test="endDate != null">
-        end_date = #{endDate,jdbcType=TIMESTAMP},
-      </if>
+                end_date = #{endDate,jdbcType=TIMESTAMP},
+            </if>
             <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
             <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="top.ezttf.ad.pojo.AdPlan">
-    update ad_plan
-    set user_id = #{userId,jdbcType=BIGINT},
-      plan_name = #{planName,jdbcType=VARCHAR},
-      plan_status = #{planStatus,jdbcType=TINYINT},
-      start_date = #{startDate,jdbcType=TIMESTAMP},
-      end_date = #{endDate,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update ad_plan
+        set user_id = #{userId,jdbcType=BIGINT},
+        plan_name = #{planName,jdbcType=VARCHAR},
+        plan_status = #{planStatus,jdbcType=TINYINT},
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 
 
     <select id="selectPlanTableByPlanStatus" parameterType="int" resultMap="TableResultMap">

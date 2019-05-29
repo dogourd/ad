@@ -39,45 +39,45 @@
         insert into ad_unit_district
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
-        id,
-      </if>
+                id,
+            </if>
             <if test="unitId != null">
-        unit_id,
-      </if>
+                unit_id,
+            </if>
             <if test="province != null">
-        province,
-      </if>
+                province,
+            </if>
             <if test="city != null">
-        city,
-      </if>
+                city,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
+                #{id,jdbcType=INTEGER},
+            </if>
             <if test="unitId != null">
-        #{unitId,jdbcType=INTEGER},
-      </if>
+                #{unitId,jdbcType=INTEGER},
+            </if>
             <if test="province != null">
-        #{province,jdbcType=VARCHAR},
-      </if>
+                #{province,jdbcType=VARCHAR},
+            </if>
             <if test="city != null">
-        #{city,jdbcType=VARCHAR},
-      </if>
+                #{city,jdbcType=VARCHAR},
+            </if>
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="top.ezttf.ad.pojo.AdUnitDistrict">
         update ad_unit_district
         <set>
             <if test="unitId != null">
-        unit_id = #{unitId,jdbcType=INTEGER},
-      </if>
+                unit_id = #{unitId,jdbcType=INTEGER},
+            </if>
             <if test="province != null">
-        province = #{province,jdbcType=VARCHAR},
-      </if>
+                province = #{province,jdbcType=VARCHAR},
+            </if>
             <if test="city != null">
-        city = #{city,jdbcType=VARCHAR},
-      </if>
+                city = #{city,jdbcType=VARCHAR},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
