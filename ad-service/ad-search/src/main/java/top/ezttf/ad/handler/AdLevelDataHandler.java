@@ -2,6 +2,7 @@ package top.ezttf.ad.handler;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import top.ezttf.ad.constant.OpType;
 import top.ezttf.ad.dump.table.*;
 import top.ezttf.ad.index.DataTable;
 import top.ezttf.ad.index.IIndexAware;
@@ -16,7 +17,6 @@ import top.ezttf.ad.index.creativeunit.CreativeUnitObject;
 import top.ezttf.ad.index.district.UnitDistrictIndex;
 import top.ezttf.ad.index.interest.UnitItIndex;
 import top.ezttf.ad.index.keyword.UnitKeywordIndex;
-import top.ezttf.ad.mysql.constant.OpType;
 import top.ezttf.ad.util.CommonUtils;
 
 import java.util.Collections;

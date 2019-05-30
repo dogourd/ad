@@ -1,9 +1,9 @@
-package top.ezttf.ad.mysql.dto;
+package top.ezttf.ad.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import top.ezttf.ad.mysql.constant.OpType;
+import top.ezttf.ad.constant.OpType;
 
 import java.util.HashMap;
 import java.util.List;

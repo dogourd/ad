@@ -1,4 +1,4 @@
-package top.ezttf.ad.mysql.dto;
+package top.ezttf.ad.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

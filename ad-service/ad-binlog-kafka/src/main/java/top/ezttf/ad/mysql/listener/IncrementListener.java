@@ -4,13 +4,12 @@ import com.github.shyiko.mysql.binlog.event.EventType;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import top.ezttf.ad.constant.DBConstant;
+import top.ezttf.ad.constant.OpType;
+import top.ezttf.ad.dto.MysqlRowData;
+import top.ezttf.ad.dto.TableTemplate;
 import top.ezttf.ad.mysql.binlog.BinlogRowData;
-import top.ezttf.ad.mysql.constant.DBConstant;
-import top.ezttf.ad.mysql.constant.OpType;
-import top.ezttf.ad.mysql.dto.MysqlRowData;
-import top.ezttf.ad.mysql.dto.TableTemplate;
 import top.ezttf.ad.sender.ISender;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +24,7 @@ import java.util.List;
 public class IncrementListener implements IListener {
 
     /**
-     * {@link top.ezttf.ad.sender.index.IndexSender}
+     * {@link top.ezttf.ad.sender.kafka.KafkaSender}
      */
     private final ISender iSender;
     private final AggregationListener aggregationListener;
@@ -33,7 +32,7 @@ public class IncrementListener implements IListener {
     @Autowired
     public IncrementListener(
             AggregationListener aggregationListener,
-            @Qualifier(value = "indexSender") ISender iSender) {
+            ISender iSender) {
         this.aggregationListener = aggregationListener;
         this.iSender = iSender;
     }
@@ -44,14 +43,12 @@ public class IncrementListener implements IListener {
     @PostConstruct
     public void register() {
         log.info("IncrementListener register db as table info");
-        DBConstant.TABLE_2_DB.forEach((key, value) -> {
-            aggregationListener.register(value, key, this);
-        });
+        DBConstant.TABLE_2_DB.forEach((key, value) -> aggregationListener.register(value, key, this));
     }
 
     /**
      * 事件处理逻辑, 投放增量数据
-     * @param eventData
+     * @param eventData binlog监听到的数据, 许哟啊对其解析
      */
     @Override
     public void onEvent(BinlogRowData eventData) {
@@ -71,7 +68,6 @@ public class IncrementListener implements IListener {
             log.warn("{} not support for {}", mySQLRowData.getOpType(), mySQLRowData.getTableName());
             return;
         }
-        // TODO 测试一下能不能不 new Map 直接传参 afterMap
         eventData.getAfter().forEach(afterMap ->
                 mySQLRowData.getFieldValueMapList().add(Maps.newHashMap())
         );

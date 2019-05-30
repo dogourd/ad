@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import top.ezttf.ad.constant.DBConstant;
+import top.ezttf.ad.dto.MysqlRowData;
 import top.ezttf.ad.dump.table.*;
 import top.ezttf.ad.handler.AdLevelDataHandler;
 import top.ezttf.ad.index.DataLevel;
-import top.ezttf.ad.mysql.constant.DBConstant;
-import top.ezttf.ad.mysql.dto.MysqlRowData;
 import top.ezttf.ad.sender.ISender;
 import top.ezttf.ad.util.CommonUtils;
 

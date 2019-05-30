@@ -4,12 +4,12 @@ import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import top.ezttf.ad.dto.TableTemplate;
 import top.ezttf.ad.mysql.TemplateHolder;
 import top.ezttf.ad.mysql.binlog.BinlogRowData;
-import top.ezttf.ad.mysql.dto.TableTemplate;
 
 import java.io.Serializable;
 import java.util.*;

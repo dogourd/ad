@@ -1,4 +1,4 @@
-package top.ezttf.ad.mysql.constant;
+package top.ezttf.ad.constant;
 
 import com.github.shyiko.mysql.binlog.event.EventType;
 

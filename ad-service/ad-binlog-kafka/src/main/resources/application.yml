@@ -1,0 +1,27 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /ad-binlog-kafka
+spring:
+  application:
+    name: eureka-client-ad-binlog-kafka
+  kafka:
+    bootstrap-servers: play:9092
+    listener:
+      concurrency: 4
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://local.eureka.server:8000/eureka
+
+adconf:
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: yuwen
+    password: lyp82nlf
+    binlogName: binlog.000001
+    position: -1
+  kafka:
+    topic: ad-search-mysql-data

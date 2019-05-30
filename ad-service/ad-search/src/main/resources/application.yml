@@ -35,6 +35,10 @@ spring:
         min-idle: 5
         max-wait: 6000
     timeout: 1000
+  kafka:
+    bootstrap-servers: play:9092
+    listener:
+      concurrency: 4
 
 eureka:
   client:
@@ -56,13 +60,5 @@ logging:
 
 
 adconf:
-  mysql:
-    host: 127.0.0.1
-    port: 3306
-    username: yuwen
-    password: lyp82nlf
-    binlogName: binlog.000001
-    position: -1
-
   kafka:
     topic: ad-search-mysql-data

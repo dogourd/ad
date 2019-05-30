@@ -1,4 +1,4 @@
-package top.ezttf.ad.mysql.constant;
+package top.ezttf.ad.constant;
 
 import java.util.Collections;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
-package top.ezttf.ad.mysql.dto;
+package top.ezttf.ad.dto;
 
 import lombok.Data;
-import top.ezttf.ad.mysql.constant.OpType;
+import top.ezttf.ad.constant.OpType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,9 +39,9 @@ public class ParseTemplate {
 
     /**
      * 对照类图查看
-     * 1. 获取{@link databaseName}
+     * 1. 获取{@see databaseName}
      * 直接从JsonTemplate的databaseName属性中获取 dbName, 直接作为{@link ParseTemplate}的databaseName属性值;
-     * 2. 构造 {@link tableTemplateMap}
+     * 2. 构造 {@see tableTemplateMap}
      * (1) opTypeFieldSetMap
      * 从jsonTemplate中获取List<JsonTable>进行逐个遍历,
      * 获取{@link JsonTable}的insertList, updateList以及deleteList(即需要增删改的列),
@@ -60,8 +60,8 @@ public class ParseTemplate {
      * 步骤二遍历过程中可以从每一个 {@link JsonTable}中提取出来一个未处理 positionMap属性的 {@link TableTemplate}, 一次遍历结束后
      * 将构造出来的{@link TableTemplate} 作为value, tableName作为Key, 封装为map作为ParseTemplate中的tableTemplateMap属性
      *
-     * @param jsonTemplate
-     * @return
+     * @param jsonTemplate jsonTemplate
+     * @return ParseTemplate
      */
     public static ParseTemplate parse(Template jsonTemplate) {
         ParseTemplate template = new ParseTemplate();

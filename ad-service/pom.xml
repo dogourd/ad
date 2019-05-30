@@ -16,6 +16,8 @@
         <module>ad-search</module>
         <module>ad-dump</module>
         <module>ad-dashboard</module>
+        <module>ad-binlog-common</module>
+        <module>ad-binlog-kafka</module>
     </modules>
     <packaging>pom</packaging>
 

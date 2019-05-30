@@ -5,10 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import top.ezttf.ad.mysql.constant.OpType;
-import top.ezttf.ad.mysql.dto.ParseTemplate;
-import top.ezttf.ad.mysql.dto.TableTemplate;
-import top.ezttf.ad.mysql.dto.Template;
+import top.ezttf.ad.constant.OpType;
+import top.ezttf.ad.dto.ParseTemplate;
+import top.ezttf.ad.dto.TableTemplate;
+import top.ezttf.ad.dto.Template;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;

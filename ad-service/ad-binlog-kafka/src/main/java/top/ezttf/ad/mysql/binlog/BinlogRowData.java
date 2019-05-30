@@ -2,7 +2,7 @@ package top.ezttf.ad.mysql.binlog;
 
 import com.github.shyiko.mysql.binlog.event.EventType;
 import lombok.Data;
-import top.ezttf.ad.mysql.dto.TableTemplate;
+import top.ezttf.ad.dto.TableTemplate;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package top.ezttf.ad.mysql.dto;
+package top.ezttf.ad.dto;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;

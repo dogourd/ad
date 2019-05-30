@@ -4,10 +4,10 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
+import top.ezttf.ad.constant.OpType;
 import top.ezttf.ad.dump.DConstant;
 import top.ezttf.ad.dump.table.*;
 import top.ezttf.ad.handler.AdLevelDataHandler;
-import top.ezttf.ad.mysql.constant.OpType;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
