@@ -32,3 +32,5 @@ eureka:
 logging:
   level:
     top.ezttf.ad: debug
+  config: classpath:logback.xml
+  file: ad-sponsor.log

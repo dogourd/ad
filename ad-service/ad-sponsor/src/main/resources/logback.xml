@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- logback 必须要配置的三个元素: appender、logger、pattern -->
+
+    <!-- appender 定义了写日志的组件, 有两个必须的属性: name 和 class -->
+    <!-- name 指定 appender 的名称 -->
+    <!-- class 指定 appender 的类型, 即实现的功能 -->
+    <!-- RollingFileAppender 的作用是滚动记录文件, 先将日志记录到指定文件, 当符合某个条件时再将日志记录到其他文件 -->
+    <appender name="system" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/ad-sponsor.log</file>
+        <!-- rollingPolicy 的作用是当发生滚动时, 定义 RollingFileAppender 的行为 -->
+        <!-- TimeBasedRollingPolicy 是最常用的滚动策略, 它根据时间指定滚动策略, 既负责滚动也负责触发滚动 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>./logs/ad-sponsor.%d{yyyy-MM-dd}.log</fileNamePattern>     <!-- 必要节点 -->
+            <maxHistory>5</maxHistory>      <!-- 可选节点 -->
+        </rollingPolicy>
+        <!-- encoder 负责两件事情: 把日志信息转换为字节数组; 把字节数组写到输出流 -->
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss:SSS}] %thread %level %logger{36} %L - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss:SSS}] %thread %level %logger{36} %L - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- logger 是用来设置某一个包或者具体某一个类的日志打印级别, 以及指定的 appender additivity: 是否root节点生效-->
+    <logger name="top.ezttf.ad" level="info" additivity="false">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="system"/>
+    </logger>
+
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" level="info"
+            additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="debug"
+            additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace"
+            additivity="false">
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>
