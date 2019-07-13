@@ -104,7 +104,7 @@ FeignClient中指定name,url
 - 事无绝对, 合理选择
 
 ### Feign性能优化
-- 连接池 (提升15%左右)
+- 连接池 (提升15%左右)  
 默认情况下Feign是使用HttpURLConnection来进行请求,它是没有连接池
 的,但事实上Feign底层,除了可以使用HttpURLConnection发送请求以外,
 还支持使用apache的HttpClient以及OKHttp去发送请求,而这两个客户端都是
@@ -117,14 +117,14 @@ FeignClient中指定name,url
     </dependency>
     ```
     2. 写配置  
-    `# 让Feign使用apache httpclient做请求,而不是默认的HttpURLConnection`  
-    feign.httpclient.enabled: true
-    `# Feign的最大连接数`  
-    feign.httpclient.max-connections: 200
+    `# 让Feign使用apache httpclient做请求,而不是默认的HttpURLConnection`    
+    feign.httpclient.enabled: true  
+    `# Feign的最大连接数`    
+    feign.httpclient.max-connections: 200  
     `# Feign单个路径(RequestMapping)的最大连接数,需要结合压测来
-    尝试将最大连接数和单路径最大连接数调节为最优配置比例`  
-    feign.httpclient.max-connections-per-route: 50
-- 日志级别
+    尝试将最大连接数和单路径最大连接数调节为最优配置比例`    
+    feign.httpclient.max-connections-per-route: 50  
+- 日志级别  
 Feign默认是不打印日志的,这个日志级别的性能大概是最好的,但是生产环境
 如果需要理解请求的具体细节,就需要将日志级别设置为basic,绝对不建议设置为
 FULL,因为打印的日志太多了,对性能的损耗相对比较大。
