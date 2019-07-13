@@ -51,7 +51,7 @@ feign.client.config.default.loggerLevel: FULL
 |SetterFactory|用于设置Hystrix的配置属性,Feign整合Hystrix时才会使用|
 - 配置属性配置  
 feign.client.config:  
-　　<feignName>:  
+　　`<feignName>`:  
 　　　　connectTimeout: 5000 # 连接超时时间  
 　　　　readTimeout: 5000 # 读取超时时间  
 　　　　loggerLevel: FULL # 日志级别  
@@ -78,6 +78,7 @@ Ribbon是一个负载均衡器,帮助我们选择实例,而Feign是一个HTTP cl
 |:----|:----|:----|
 |代码配置|基于代码,更加灵活|如果Feign的配置类加了@Configuration注解,则需要注意父子上下文的问题<br/>线上修改需要重新打包发布|
 |属性配置|易上手,配置更加直观,<br/>线上修改无需重新打包、发布，优先级更高|极端场景下,没有代码方式配置灵活|
+
 优先级关系(左高右低):   
 细粒度的属性配置 > 细粒度的代码配置 > 全局的属性配置 > 全局的代码配置  
 - Feign配置最佳实践
