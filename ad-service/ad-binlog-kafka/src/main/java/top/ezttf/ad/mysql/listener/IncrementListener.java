@@ -69,7 +69,7 @@ public class IncrementListener implements IListener {
             return;
         }
         eventData.getAfter().forEach(afterMap ->
-                mySQLRowData.getFieldValueMapList().add(Maps.newHashMap())
+                mySQLRowData.getFieldValueMapList().add(Maps.newHashMap(afterMap))
         );
         iSender.sender(mySQLRowData);
     }
